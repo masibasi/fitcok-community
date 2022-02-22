@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {FitnessScreen} from '../Screens/FitnessScreen';
+import {FitnessScreenNav} from './FitnessScreenNav';
 
 const HomeIcon = require('../Img/naviIcHomeGrayText.png');
 const FitnessIcon = require('../Img/naviIcFitnessBkSelectText.png');
@@ -31,13 +31,27 @@ export const BottomTabNav = () => {
         },
       })}>
       <Tab.Screen name="홈" component={HomeScreen} />
-      <Tab.Screen name="피트니스" component={FitnessScreen} />
+      <Tab.Screen name="피트니스" component={FitnessScreenNav} />
       <Tab.Screen name="커머스" component={CommerceScreen} />
       <Tab.Screen name="마이" component={MyScreen} />
     </Tab.Navigator>
   );
 };
 
+const TabBarIcon = (focused, name) => {
+  let iconImagePath;
+  let iconName, iconSize;
+
+  if (route.name === '홈') {
+    return <Image source={HomeIcon} />;
+  } else if (route.name === '피트니스') {
+    return <Image source={FitnessIcon} />;
+  } else if (route.name === '커머스') {
+    return <Image source={CommerceIcon} />;
+  } else if (route.name === '마이') {
+    return <Image source={MyIcon} />;
+  }
+};
 const HomeScreen = () => {
   return (
     <View>
