@@ -12,6 +12,9 @@ import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TopTab} from './TopTab';
 import {TopNav} from '../Navigation/TopNav';
+import {TodayHotItem} from '../Components/TodayHotItem';
+import {RecruitTester} from '../Components/RecruitTester';
+import {PopularFeed} from '../Components/PopularFeed';
 
 const MainContainer = styled(ScrollView)`
   background-color: turquoise;
@@ -24,7 +27,11 @@ export const AllTabScreen = ({navigation}) => {
     <ContentWrapper>
       <TopTab />
       <TopNav title="all" navigation={navigation} />
-      <MainContainer></MainContainer>
+      <MainContainer>
+        <TodayHotItem />
+        <PopularFeed />
+        <RecruitTester />
+      </MainContainer>
     </ContentWrapper>
   );
 };
