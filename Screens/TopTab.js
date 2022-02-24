@@ -6,7 +6,7 @@ import TitleImg from '../Img/mainContentstitle1Copy13.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const TopContainer = styled(View)`
-  background-color: pink;
+  background-color: white;
   height: 56px;
   width: 100%;
   padding-left: 16px;
