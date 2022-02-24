@@ -40,7 +40,6 @@ const Text1 = styled(Text)`
   font-weight: bold;
 `;
 const Text2 = styled(Text)`
-  //   color: 'rgb(108,103,230)';
   font-size: 14px;
   font-weight: bold;
 `;
