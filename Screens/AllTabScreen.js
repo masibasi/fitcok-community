@@ -15,6 +15,8 @@ import {TopNav} from '../Navigation/TopNav';
 import {Post} from '../Components/Post';
 import SearchConditionTab from '../Components/SearchConditionTab';
 
+const writeIcon = require('../Img/icPencilWhite24.png');
+
 const MainContainer = styled(ScrollView)`
   background-color: turquoise;
 `;
@@ -30,22 +32,25 @@ const ButtonWrapper = styled(View)`
 `;
 const WritePostButton = styled(TouchableOpacity)`
   border-radius: 50px;
-  width: 100px;
+  width: 127px;
   height: 44px;
   align-items: center;
   justify-content: center;
   background-color: 'rgb(24,25,26)';
+  flex-direction: row;
 `;
 const ButtonText = styled(Text)`
   color: 'rgb(255,255,255)';
   font-size: 14px;
   font-weight: bold;
+  margin-right: 6px;
+  margin-left: 6px;
 `;
 export const AllTabScreen = ({navigation}) => {
   return (
     <ContentWrapper>
       <TopTab />
-      <TopNav title="feed" navigation={navigation} />
+      <TopNav title="all" navigation={navigation} />
       <MainContainer>
         <Post tag="테마1" />
         <Post popular={true} tag="테마1" />
@@ -57,7 +62,8 @@ export const AllTabScreen = ({navigation}) => {
       </MainContainer>
       <ButtonWrapper>
         <WritePostButton>
-          <ButtonText>작성하기</ButtonText>
+          <Image source={writeIcon} />
+          <ButtonText>글 쓰기</ButtonText>
         </WritePostButton>
       </ButtonWrapper>
     </ContentWrapper>

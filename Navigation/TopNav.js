@@ -16,11 +16,17 @@ const Container = styled(View)`
   align-items: center;
   padding: 16px;
 `;
-const AllTabTitle = styled(Image).attrs({})`
+const AllTitle = styled(Text)`
   margin-right: 24px;
+  font-size: 16px;
+  font-weight: ${props => (props.title == 'all' ? 'bold' : 400)};
+  color: ${props => (props.title == 'all' ? 'black' : 'rgb(151,151,151)')};
 `;
-const FeedTabTitle = styled(Image)`
+const PopularTitle = styled(Text)`
   margin-right: 24px;
+  font-size: 16px;
+  font-weight: ${props => (props.title == 'popular' ? 'bold' : 400)};
+  color: ${props => (props.title == 'popular' ? 'black' : 'rgb(151,151,151)')};
 `;
 const GroupTabTitle = styled(Image)`
   margin-right: 24px;
@@ -36,12 +42,12 @@ const TestTabButton = styled(TouchableOpacity)``;
 const Highlight = styled(View)`
   position: absolute;
   width: ${props =>
-    props.all ? '28px' : props.feed ? '24px' : props.group ? '40px' : '30px'};
+    props.all ? '31px' : props.feed ? '24px' : props.group ? '40px' : '30px'};
   height: 8px;
   background-color: 'rgb(255,184,6)';
   bottom: 17px;
   left: ${props =>
-    props.all ? '16px' : props.feed ? '68px' : props.group ? '120px' : '199px'};
+    props.all ? '17px' : props.feed ? '68px' : props.group ? '120px' : '199px'};
 `;
 export const TopNav = props => {
   let tabTitle = props.title;
@@ -59,10 +65,11 @@ export const TopNav = props => {
       )}
 
       <AllTabButton onPress={() => navigation.navigate('전체')}>
-        <AllTabTitle source={require('../Img/allTabTitle.png')} />
+        <AllTitle title={tabTitle}>전체</AllTitle>
       </AllTabButton>
       <FeedTabButton onPress={() => navigation.navigate('피드')}>
-        <FeedTabTitle source={require('../Img/feedTabTitle.png')} />
+        {/*여기 인기탭 만들면 바꿔줘야함 */}
+        <PopularTitle title={tabTitle}>인기</PopularTitle>
       </FeedTabButton>
       <GroupTabButton onPress={() => navigation.navigate('공동구매')}>
         <GroupTabTitle source={require('../Img/groupTabTitle.png')} />
