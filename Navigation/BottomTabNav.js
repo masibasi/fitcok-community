@@ -2,36 +2,34 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {FitnessScreenNav} from './FitnessScreenNav';
+import {CommunityScreenNav} from './CommunityScreenNav';
 
-const HomeIcon = require('../Img/naviIcHomeGrayText.png');
-const FitnessIcon = require('../Img/naviIcFitnessBkSelectText.png');
-const CommerceIcon = require('../Img/naviIcStore2GrayText.png');
-const MyIcon = require('../Img/naviIcMypageGrayText.png');
+const HomeDisabled = require('../Img/naviIcHomeGrayText.png');
+const HomeActive = require('../Img/naviHomeActive.png');
+const FitnessActive = require('../Img/naviIcFitnessBkSelectText.png');
+const FitnessDisabled = require('../Img/naviFitnessDisabled.png');
+const CommunityActive = require('../Img/naviCommunityActive.png');
+const CommunityDisabled = require('../Img/naviCommunityDisabled.png');
+const CommerceActive = require('../Img/naviStoreActive.png');
+const CommerceDisabled = require('../Img/naviStoreDisabled.png');
+const MypageActive = require('../Img/naviMypageActive.png');
+const MypageDisabled = require('../Img/naviMypageDisabled.png');
 const Tab = createBottomTabNavigator();
 
 export const BottomTabNav = () => {
   return (
     <Tab.Navigator
-      initialRouteName="피트니스"
+      initialRouteName="커뮤니티"
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarInactiveTintColor: 'rgb(116,117,118)',
         tabBarActiveTintColor: 'rgb(24,25,26)',
-        tabBarIcon: ({focused}) => {
-          if (route.name === '홈') {
-            return <Image source={HomeIcon} />;
-          } else if (route.name === '피트니스') {
-            return <Image source={FitnessIcon} />;
-          } else if (route.name === '커머스') {
-            return <Image source={CommerceIcon} />;
-          } else if (route.name === '마이') {
-            return <Image source={MyIcon} />;
-          }
-        },
+        tabBarStyle: {paddingBottom: 5},
+        tabBarIcon: ({focused}) => TabBarIcon(focused, route.name),
       })}>
       <Tab.Screen name="홈" component={HomeScreen} />
-      <Tab.Screen name="피트니스" component={FitnessScreenNav} />
+      <Tab.Screen name="피트니스" component={FitnessScreen} />
+      <Tab.Screen name="커뮤니티" component={CommunityScreenNav} />
       <Tab.Screen name="커머스" component={CommerceScreen} />
       <Tab.Screen name="마이" component={MyScreen} />
     </Tab.Navigator>
@@ -42,14 +40,36 @@ const TabBarIcon = (focused, name) => {
   let iconImagePath;
   let iconName, iconSize;
 
-  if (route.name === '홈') {
-    return <Image source={HomeIcon} />;
-  } else if (route.name === '피트니스') {
-    return <Image source={FitnessIcon} />;
-  } else if (route.name === '커머스') {
-    return <Image source={CommerceIcon} />;
-  } else if (route.name === '마이') {
-    return <Image source={MyIcon} />;
+  if (name === '홈') {
+    return focused ? (
+      <Image source={HomeActive} />
+    ) : (
+      <Image source={HomeDisabled} />
+    );
+  } else if (name === '피트니스') {
+    return focused ? (
+      <Image source={FitnessActive} />
+    ) : (
+      <Image source={FitnessDisabled} />
+    );
+  } else if (name === '커뮤니티') {
+    return focused ? (
+      <Image source={CommunityActive} />
+    ) : (
+      <Image source={CommunityDisabled} />
+    );
+  } else if (name === '커머스') {
+    return focused ? (
+      <Image source={CommerceActive} />
+    ) : (
+      <Image source={CommerceDisabled} />
+    );
+  } else if (name === '마이') {
+    return focused ? (
+      <Image source={MypageActive} />
+    ) : (
+      <Image source={MypageDisabled} />
+    );
   }
 };
 const HomeScreen = () => {
@@ -63,6 +83,13 @@ const CommerceScreen = () => {
   return (
     <View>
       <Text>Commerce</Text>
+    </View>
+  );
+};
+const FitnessScreen = () => {
+  return (
+    <View>
+      <Text>Fitness</Text>
     </View>
   );
 };

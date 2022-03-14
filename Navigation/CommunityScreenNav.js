@@ -8,7 +8,7 @@ import {TestTabScreen} from '../Screens/TestTabScreen';
 
 const Tab = createBottomTabNavigator();
 
-export const FitnessScreenNav = ({navigation}) => {
+export const CommunityScreenNav = ({navigation}) => {
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={() => {}}>
       <Tab.Screen name="전체" component={AllTabScreen} />

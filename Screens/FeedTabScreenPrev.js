@@ -41,19 +41,19 @@ const ButtonText = styled(Text)`
   font-size: 14px;
   font-weight: bold;
 `;
-export const AllTabScreen = ({navigation}) => {
+export const FeedTabScreen = ({navigation}) => {
   return (
     <ContentWrapper>
       <TopTab />
       <TopNav title="feed" navigation={navigation} />
       <MainContainer>
-        <Post tag="테마1" />
-        <Post popular={true} tag="테마1" />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
+        <SearchConditionTab />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
       </MainContainer>
       <ButtonWrapper>
         <WritePostButton>
