@@ -1,16 +1,19 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 
-const Container = styled(View)`
+const Container = styled(TouchableOpacity)`
   height: 134px;
   background-color: white;
   padding-left: 16px;
   padding-right: 16px;
+  flex: 1;
 `;
 const TopWrapper = styled(View)`
   margin-top: 16px;
   flex-direction: row;
+  flex: 1;
+  // background-color: green;
 `;
 const HashtagBox = styled(View)`
   background-color: ${props =>
@@ -26,9 +29,22 @@ const HashTag = styled(Text)`
   color: ${props => (props.popular ? 'white' : 'rgb(158,161,168)')};
   font-size: 10px;
 `;
-
-const PostTitle = styled(Text)`
+const MainWrapper = styled(View)`
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  // background-color: yellow;
+`;
+const TitleWrapper = styled(View)`
   margin-top: 12px;
+  flex-direction: row;
+`;
+const Question = require('../Img/questionIcon.png');
+const QuestionIcon = styled(Image)`
+  margin-top: 4px;
+  margin-right: 4px;
+`;
+const PostTitle = styled(Text)`
   color: 'rgb(24,25,26)';
   font-size: 14px;
 `;
@@ -36,6 +52,8 @@ const BottomWrapper = styled(View)`
   margin-top: 24px;
   flex-direction: row;
   justify-content: space-between;
+  flex: 1;
+  // background-color: gray;
 `;
 const BottomLeft = styled(View)`
   flex-direction: row;
@@ -66,20 +84,45 @@ const Nickname = styled(Text)`
   font-size: 11px;
   margin-right: 15px;
 `;
+
+const Mock = require('../Img/mockPostImage.png');
+const MockImage = styled(Image)``;
+const ImageWrapper = styled(View)`
+  justify-content: flex-end;
+  // background-color: green;
+`;
+
 export const Post = props => {
+  let isQuestionPost = props.question;
+  let isPopular = props.popular;
+  let postTag = props.tag;
+  let image = props.image;
+
   return (
     <Container>
       <TopWrapper>
-        {props.popular ? (
+        {isPopular && (
           <HashtagBox popular>
             <HashTag popular>인기</HashTag>
           </HashtagBox>
-        ) : null}
+        )}
         <HashtagBox>
-          <HashTag>{props.tag}</HashTag>
+          <HashTag>{postTag}</HashTag>
         </HashtagBox>
       </TopWrapper>
-      <PostTitle>다이어트 식단관리 다들 어떻게 하시나요?</PostTitle>
+      <MainWrapper>
+        <TitleWrapper>
+          {isQuestionPost && <QuestionIcon source={Question} />}
+
+          <PostTitle>다이어트 식단관리 다들 어떻게 하시나요?</PostTitle>
+        </TitleWrapper>
+        {image && (
+          <ImageWrapper>
+            <MockImage source={Mock} />
+          </ImageWrapper>
+        )}
+      </MainWrapper>
+
       <BottomWrapper>
         <BottomLeft>
           <Image source={LikeHeart} />

@@ -18,7 +18,7 @@ import SearchConditionTab from '../Components/SearchConditionTab';
 const writeIcon = require('../Img/icPencilWhite24.png');
 
 const MainContainer = styled(ScrollView)`
-  background-color: turquoise;
+  // background-color: turquoise;
 `;
 const ContentWrapper = styled(View)`
   flex: 1;
@@ -53,9 +53,9 @@ export const AllTabScreen = ({navigation}) => {
       <TopNav title="all" navigation={navigation} />
       <MainContainer>
         <Post tag="테마1" />
-        <Post popular={true} tag="테마1" />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
+        <Post tag="테마1" popular={true} />
+        <Post tag="테마1" question />
+        <Post tag="테마1" image />
         <Post tag="테마1" />
         <Post tag="테마1" />
         <Post tag="테마1" />

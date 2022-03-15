@@ -25,29 +25,30 @@ const AllTitle = styled(Text)`
 const PopularTitle = styled(Text)`
   margin-right: 24px;
   font-size: 16px;
-  font-weight: ${props => (props.title == 'popular' ? 'bold' : 400)};
-  color: ${props => (props.title == 'popular' ? 'black' : 'rgb(151,151,151)')};
+  font-weight: ${props => (props.title == 'feed' ? 'bold' : 400)};
+  color: ${props => (props.title == 'feed' ? 'black' : 'rgb(151,151,151)')};
 `;
-const GroupTabTitle = styled(Image)`
+const ThemeTitle = styled(Text)`
   margin-right: 24px;
+  font-size: 16px;
+  font-weight: ${props => (props.title == 'theme' ? 'bold' : 400)};
+  color: ${props => (props.title == 'theme' ? 'black' : 'rgb(151,151,151)')};
 `;
-const TestTabTitle = styled(Image)`
-  margin-right: 24px;
-`;
+
 const AllTabButton = styled(TouchableOpacity)``;
 const FeedTabButton = styled(TouchableOpacity)``;
 const GroupTabButton = styled(TouchableOpacity)``;
-const TestTabButton = styled(TouchableOpacity)``;
+const ThemeTabButton = styled(TouchableOpacity)``;
 
 const Highlight = styled(View)`
   position: absolute;
   width: ${props =>
-    props.all ? '31px' : props.feed ? '24px' : props.group ? '40px' : '30px'};
+    props.all ? '31px' : props.feed ? '30px' : props.group ? '40px' : '30px'};
   height: 8px;
   background-color: 'rgb(255,184,6)';
   bottom: 17px;
   left: ${props =>
-    props.all ? '17px' : props.feed ? '68px' : props.group ? '120px' : '199px'};
+    props.all ? '17px' : props.feed ? '72px' : props.group ? '120px' : '199px'};
 `;
 export const TopNav = props => {
   let tabTitle = props.title;
@@ -71,12 +72,16 @@ export const TopNav = props => {
         {/*여기 인기탭 만들면 바꿔줘야함 */}
         <PopularTitle title={tabTitle}>인기</PopularTitle>
       </FeedTabButton>
-      <GroupTabButton onPress={() => navigation.navigate('공동구매')}>
-        <GroupTabTitle source={require('../Img/groupTabTitle.png')} />
-      </GroupTabButton>
-      <TestTabButton onPress={() => navigation.navigate('체험단')}>
-        <TestTabTitle source={require('../Img/testTabTitle.png')} />
-      </TestTabButton>
+
+      <ThemeTabButton onPress={() => navigation.navigate('체험단')}>
+        <ThemeTitle title={tabTitle}>테마1</ThemeTitle>
+      </ThemeTabButton>
+      <ThemeTabButton onPress={() => navigation.navigate('체험단')}>
+        <ThemeTitle title={tabTitle}>테마2</ThemeTitle>
+      </ThemeTabButton>
+      <ThemeTabButton onPress={() => navigation.navigate('체험단')}>
+        <ThemeTitle title={tabTitle}>테마3</ThemeTitle>
+      </ThemeTabButton>
     </Container>
   );
 };
