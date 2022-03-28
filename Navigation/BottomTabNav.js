@@ -26,6 +26,7 @@ export const BottomTabNav = () => {
         tabBarActiveTintColor: 'rgb(24,25,26)',
         tabBarIcon: ({focused}) => TabBarIcon(focused, route.name),
         tabBarLabel: ({focused}) => TabBarLabel(focused, route.name),
+        tabBarStyle: {paddingTop: 4},
       })}>
       <Tab.Screen name="홈" component={HomeScreen} />
       <Tab.Screen name="피트니스" component={FitnessScreen} />
