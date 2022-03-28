@@ -2,6 +2,9 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 
+import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
+import LikeIcon from '../Icon/icHeartBk18.svg';
+
 const Container = styled(TouchableOpacity)`
   height: 134px;
   background-color: white;
@@ -64,7 +67,7 @@ const BottomRight = styled(View)`
   flex-direction: row;
   margin-right: 4px;
 `;
-const LikeHeart = require('../Img/icHeartBk18.png');
+
 const Likes = styled(Text)`
   color: 'rgb(24,25,26)';
   font-size: 12px;
@@ -72,7 +75,6 @@ const Likes = styled(Text)`
   margin-right: 12px;
   font-weight: 500;
 `;
-const CommentIcon = require('../Img/icCommentBk24.png');
 const Comments = styled(Text)`
   color: 'rgb(24,25,26)';
   font-size: 12px;
@@ -155,9 +157,9 @@ export const Post = props => {
       </MainWrapper>
       <BottomWrapper>
         <BottomLeft>
-          <Image source={LikeHeart} />
+          <LikeIcon />
           <Likes>12</Likes>
-          <Image source={CommentIcon} />
+          <CommentIcon />
 
           <Comments>8</Comments>
         </BottomLeft>

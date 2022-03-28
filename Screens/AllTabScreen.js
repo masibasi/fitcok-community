@@ -1,21 +1,12 @@
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import styled from 'styled-components/native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
 import {TopTab} from './TopTab';
 import {TopNav} from '../Navigation/TopNav';
 import {Post} from '../Components/Post';
-import SearchConditionTab from '../Components/SearchConditionTab';
 
-const writeIcon = require('../Img/icPencilWhite24.png');
+import PencilIcon from '../Icon/icPencilWhite24.svg';
 
 const MainContainer = styled(ScrollView)`
   // background-color: turquoise;
@@ -62,7 +53,7 @@ export const AllTabScreen = ({navigation}) => {
       </MainContainer>
       <ButtonWrapper>
         <WritePostButton>
-          <Image source={writeIcon} />
+          <PencilIcon />
           <ButtonText>글 쓰기</ButtonText>
         </WritePostButton>
       </ButtonWrapper>

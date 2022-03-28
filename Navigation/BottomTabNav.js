@@ -4,16 +4,17 @@ import {View, Text, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {CommunityScreenNav} from './CommunityScreenNav';
 
-const HomeDisabled = require('../Img/naviIcHomeGrayText.png');
-const HomeActive = require('../Img/naviHomeActive.png');
-const FitnessActive = require('../Img/naviIcFitnessBkSelectText.png');
-const FitnessDisabled = require('../Img/naviFitnessDisabled.png');
-const CommunityActive = require('../Img/naviCommunityActive.png');
-const CommunityDisabled = require('../Img/naviCommunityDisabled.png');
-const CommerceActive = require('../Img/naviStoreActive.png');
-const CommerceDisabled = require('../Img/naviStoreDisabled.png');
-const MypageActive = require('../Img/naviMypageActive.png');
-const MypageDisabled = require('../Img/naviMypageDisabled.png');
+import HomeActiveIcon from '../Icon/naviHomeActive.svg';
+import HomeDisabledIcon from '../Icon/naviHomeDisabled.svg';
+import CommunityActiveIcon from '../Icon/naviCommunityActive.svg';
+import CommunityDisabledIcon from '../Icon/naviCommunityDisabled.svg';
+import FitnessActiveIcon from '../Icon/naviFitnessActive.svg';
+import FitnessDisabledIcon from '../Icon/naviFitnessDisabled.svg';
+import StoreActiveIcon from '../Icon/naviStoreActive.svg';
+import StoreDisabledIcon from '../Icon/naviStoreDisabled.svg';
+import MypageActiveIcon from '../Icon/naviMypageActive.svg';
+import MypageDisabledIcon from '../Icon/naviMypageDisabled.svg';
+
 const Tab = createBottomTabNavigator();
 
 export const BottomTabNav = () => {
@@ -52,35 +53,15 @@ const TabBarLabel = (focused, name) => {
 };
 const TabBarIcon = (focused, name) => {
   if (name === '홈') {
-    return focused ? (
-      <Image source={HomeActive} />
-    ) : (
-      <Image source={HomeDisabled} />
-    );
+    return focused ? <HomeActiveIcon /> : <HomeDisabledIcon />;
   } else if (name === '피트니스') {
-    return focused ? (
-      <Image source={FitnessActive} />
-    ) : (
-      <Image source={FitnessDisabled} />
-    );
+    return focused ? <FitnessActiveIcon /> : <FitnessDisabledIcon />;
   } else if (name === '커뮤니티') {
-    return focused ? (
-      <Image source={CommunityActive} />
-    ) : (
-      <Image source={CommunityDisabled} />
-    );
+    return focused ? <CommunityActiveIcon /> : <CommunityDisabledIcon />;
   } else if (name === '커머스') {
-    return focused ? (
-      <Image source={CommerceActive} />
-    ) : (
-      <Image source={CommerceDisabled} />
-    );
+    return focused ? <StoreActiveIcon /> : <StoreDisabledIcon />;
   } else if (name === '마이') {
-    return focused ? (
-      <Image source={MypageActive} />
-    ) : (
-      <Image source={MypageDisabled} />
-    );
+    return focused ? <MypageActiveIcon /> : <MypageDisabledIcon />;
   }
 };
 const HomeScreen = () => {
