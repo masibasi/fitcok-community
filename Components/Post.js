@@ -9,10 +9,15 @@ const Container = styled(TouchableOpacity)`
   padding-right: 16px;
   flex: 1;
 `;
-const TopWrapper = styled(View)`
-  margin-top: 16px;
+const MainWrapper = styled(View)`
+  justify-content: space-between;
   flex-direction: row;
   flex: 1;
+`;
+const MainLeftWrapper = styled(View)``;
+const TagWrapper = styled(View)`
+  margin-top: 16px;
+  flex-direction: row;
   // background-color: green;
 `;
 const HashtagBox = styled(View)`
@@ -30,14 +35,9 @@ const HashTag = styled(Text)`
   font-size: 10px;
   font-weight: bold;
 `;
-const MainWrapper = styled(View)`
-  flex-direction: row;
-  flex: 1;
-  justify-content: space-between;
-  // background-color: yellow;
-`;
+
 const TitleWrapper = styled(View)`
-  margin-top: 12px;
+  margin-top: 16px;
   flex-direction: row;
   align-items: center;
 `;
@@ -54,7 +54,7 @@ const BottomWrapper = styled(View)`
   margin-top: 24px;
   flex-direction: row;
   justify-content: space-between;
-  flex: 1;
+  padding-bottom: 17px;
   // background-color: gray;
 `;
 const BottomLeft = styled(View)`
@@ -62,7 +62,7 @@ const BottomLeft = styled(View)`
 `;
 const BottomRight = styled(View)`
   flex-direction: row;
-  margin-right: 16px;
+  margin-right: 4px;
 `;
 const LikeHeart = require('../Img/icHeartBk18.png');
 const Likes = styled(Text)`
@@ -86,16 +86,36 @@ const ElapsedTime = styled(Text)`
 const Nickname = styled(Text)`
   color: 'rgb(132,133,137)';
   font-size: 11px;
-  margin-right: 15px;
+`;
+const Dot = styled(Text)`
+  color: 'rgb(229,230,232)';
+  font-size: 11px;
+  margin-right: 6px;
+  margin-left: 6px;
+  font-weight: bold;
 `;
 
 const Mock = require('../Img/mockPostImage.png');
 const MockImage = styled(Image)``;
 const ImageWrapper = styled(View)`
-  justify-content: flex-end;
   // background-color: green;
+  margin-top: 16px;
 `;
-
+const ImageCountWrapper = styled(View)`
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 27px;
+  height: 17px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+`;
+const ImageCount = styled(Text)`
+  font-size: 11px;
+  color: white;
+`;
 export const Post = props => {
   let isQuestionPost = props.question;
   let isPopular = props.popular;
@@ -104,38 +124,46 @@ export const Post = props => {
 
   return (
     <Container>
-      <TopWrapper>
-        {isPopular && (
-          <HashtagBox popular>
-            <HashTag popular>인기</HashTag>
-          </HashtagBox>
-        )}
-        <HashtagBox>
-          <HashTag>{postTag}</HashTag>
-        </HashtagBox>
-      </TopWrapper>
       <MainWrapper>
-        <TitleWrapper>
-          {isQuestionPost && <QuestionIcon>Q. </QuestionIcon>}
+        <MainLeftWrapper>
+          <TagWrapper>
+            {isPopular && (
+              <HashtagBox popular>
+                <HashTag popular>인기</HashTag>
+              </HashtagBox>
+            )}
+            <HashtagBox>
+              <HashTag>{postTag}</HashTag>
+            </HashtagBox>
+          </TagWrapper>
+          <TitleWrapper>
+            {isQuestionPost && <QuestionIcon>Q. </QuestionIcon>}
 
-          <PostTitle>다이어트 식단관리 다들 어떻게 하시나요?</PostTitle>
-        </TitleWrapper>
+            <PostTitle>다이어트 식단관리 다들 어떻게 하시나요?</PostTitle>
+          </TitleWrapper>
+        </MainLeftWrapper>
         {image && (
-          <ImageWrapper>
-            <MockImage source={Mock} />
-          </ImageWrapper>
+          <>
+            <ImageWrapper>
+              <MockImage source={Mock} />
+              <ImageCountWrapper>
+                <ImageCount>+3</ImageCount>
+              </ImageCountWrapper>
+            </ImageWrapper>
+          </>
         )}
       </MainWrapper>
-
       <BottomWrapper>
         <BottomLeft>
           <Image source={LikeHeart} />
           <Likes>12</Likes>
           <Image source={CommentIcon} />
+
           <Comments>8</Comments>
         </BottomLeft>
         <BottomRight>
           <Nickname>닉네임</Nickname>
+          <Dot>·</Dot>
           <ElapsedTime>1분전</ElapsedTime>
         </BottomRight>
       </BottomWrapper>
