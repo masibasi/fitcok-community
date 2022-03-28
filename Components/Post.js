@@ -39,6 +39,7 @@ const MainWrapper = styled(View)`
 const TitleWrapper = styled(View)`
   margin-top: 12px;
   flex-direction: row;
+  align-items: center;
 `;
 const QuestionIcon = styled(Text)`
   color: rgb(255, 184, 6);
