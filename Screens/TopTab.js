@@ -2,7 +2,8 @@ import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styled from 'styled-components/native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import MenuIcon from '../Icon/icMenuBk24.svg';
+import NotificationIcon from '../Icon/icBellBk24.svg';
 
 const TopContainer = styled(View)`
   background-color: white;
@@ -28,12 +29,12 @@ const IconWrapper = styled(View)`
   flex-direction: row;
   padding-bottom: 8px;
 `;
-const SearchButton = styled(TouchableOpacity)``;
-const SearchIcon = styled(Icon)`
-  margin-right: 8px;
+const MenuIconWrapper = styled(TouchableOpacity)``;
+
+const NotificationButton = styled(TouchableOpacity)`
+  margin-left: 8px;
 `;
-const NotificationButton = styled(TouchableOpacity)``;
-const NotificationIcon = styled(Icon)``;
+
 export const TopTab = () => {
   return (
     <TopContainer>
@@ -41,15 +42,11 @@ export const TopTab = () => {
         <PageTitle>커뮤니티</PageTitle>
       </TitleWrapper>
       <IconWrapper>
-        <SearchButton>
-          <SearchIcon name="menu" size={24} color="rgb(0,0,0)" />
-        </SearchButton>
+        <MenuIconWrapper>
+          <MenuIcon />
+        </MenuIconWrapper>
         <NotificationButton>
-          <NotificationIcon
-            name="notifications-outline"
-            size={24}
-            color="rgb(0,0,0)"
-          />
+          <NotificationIcon />
         </NotificationButton>
       </IconWrapper>
     </TopContainer>
