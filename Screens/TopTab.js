@@ -2,7 +2,6 @@ import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styled from 'styled-components/native';
 
-import TitleImg from '../Img/mainContentstitle1Copy13.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const TopContainer = styled(View)`
@@ -18,7 +17,12 @@ const TopContainer = styled(View)`
 const TitleWrapper = styled(View)`
   padding-bottom: 7px;
 `;
-const PageTitle = styled(Image)``;
+const PageTitle = styled(Text)`
+  margin-right: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+`;
 
 const IconWrapper = styled(View)`
   flex-direction: row;
@@ -34,7 +38,7 @@ export const TopTab = () => {
   return (
     <TopContainer>
       <TitleWrapper>
-        <PageTitle source={TitleImg} />
+        <PageTitle>커뮤니티</PageTitle>
       </TitleWrapper>
       <IconWrapper>
         <SearchButton>

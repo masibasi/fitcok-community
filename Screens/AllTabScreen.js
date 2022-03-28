@@ -42,7 +42,7 @@ const WritePostButton = styled(TouchableOpacity)`
 const ButtonText = styled(Text)`
   color: 'rgb(255,255,255)';
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   margin-right: 6px;
   margin-left: 6px;
 `;

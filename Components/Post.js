@@ -28,6 +28,7 @@ const HashtagBox = styled(View)`
 const HashTag = styled(Text)`
   color: ${props => (props.popular ? 'white' : 'rgb(158,161,168)')};
   font-size: 10px;
+  font-weight: bold;
 `;
 const MainWrapper = styled(View)`
   flex-direction: row;
@@ -39,10 +40,10 @@ const TitleWrapper = styled(View)`
   margin-top: 12px;
   flex-direction: row;
 `;
-const Question = require('../Img/questionIcon.png');
-const QuestionIcon = styled(Image)`
-  margin-top: 4px;
-  margin-right: 4px;
+const QuestionIcon = styled(Text)`
+  color: rgb(255, 184, 6);
+  font-size: 14px;
+  font-weight: bold;
 `;
 const PostTitle = styled(Text)`
   color: 'rgb(24,25,26)';
@@ -68,12 +69,14 @@ const Likes = styled(Text)`
   font-size: 12px;
   margin-left: 4px;
   margin-right: 12px;
+  font-weight: 500;
 `;
 const CommentIcon = require('../Img/icCommentBk24.png');
 const Comments = styled(Text)`
   color: 'rgb(24,25,26)';
   font-size: 12px;
   margin-left: 4px;
+  font-weight: 500;
 `;
 const ElapsedTime = styled(Text)`
   color: 'rgb(132,133,137)';
@@ -112,7 +115,7 @@ export const Post = props => {
       </TopWrapper>
       <MainWrapper>
         <TitleWrapper>
-          {isQuestionPost && <QuestionIcon source={Question} />}
+          {isQuestionPost && <QuestionIcon>Q. </QuestionIcon>}
 
           <PostTitle>다이어트 식단관리 다들 어떻게 하시나요?</PostTitle>
         </TitleWrapper>

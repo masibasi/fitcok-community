@@ -44,8 +44,7 @@ const TabBarLabel = (focused, name) => {
     );
   } else
     return (
-      <Text
-        style={{fontSize: 9, fontWeight: 'Normal', color: 'rgb(116,117,118)'}}>
+      <Text style={{fontSize: 9, fontWeight: '400', color: 'rgb(116,117,118)'}}>
         {name}
       </Text>
     );
