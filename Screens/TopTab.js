@@ -38,7 +38,7 @@ export const TopTab = () => {
       </TitleWrapper>
       <IconWrapper>
         <SearchButton>
-          <SearchIcon name="md-search-outline" size={24} color="rgb(0,0,0)" />
+          <SearchIcon name="menu" size={24} color="rgb(0,0,0)" />
         </SearchButton>
         <NotificationButton>
           <NotificationIcon

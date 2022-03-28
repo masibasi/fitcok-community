@@ -20,12 +20,12 @@ export const BottomTabNav = () => {
   return (
     <Tab.Navigator
       initialRouteName="커뮤니티"
-      screenOptions={({route}) => ({
+      screenOptions={({route, focused}) => ({
         headerShown: false,
         tabBarInactiveTintColor: 'rgb(116,117,118)',
         tabBarActiveTintColor: 'rgb(24,25,26)',
-        tabBarStyle: {paddingBottom: 5},
         tabBarIcon: ({focused}) => TabBarIcon(focused, route.name),
+        tabBarLabel: ({focused}) => TabBarLabel(focused, route.name),
       })}>
       <Tab.Screen name="홈" component={HomeScreen} />
       <Tab.Screen name="피트니스" component={FitnessScreen} />
@@ -35,11 +35,22 @@ export const BottomTabNav = () => {
     </Tab.Navigator>
   );
 };
-
+const TabBarLabel = (focused, name) => {
+  if (focused) {
+    return (
+      <Text style={{fontSize: 9, fontWeight: '500', color: 'rgb(24,25,26)'}}>
+        {name}
+      </Text>
+    );
+  } else
+    return (
+      <Text
+        style={{fontSize: 9, fontWeight: 'Normal', color: 'rgb(116,117,118)'}}>
+        {name}
+      </Text>
+    );
+};
 const TabBarIcon = (focused, name) => {
-  let iconImagePath;
-  let iconName, iconSize;
-
   if (name === '홈') {
     return focused ? (
       <Image source={HomeActive} />
