@@ -8,7 +8,9 @@
     "isQuestionPost": null,
     "isPopular": null,
     "postTag": "테마1",
-    "image": null
+    "image": null,
+    "likes": 12,
+    "comments": 0
   },
   {
     "title": "다이어트 식단 관리 다들 어떻게 하시나요?",
@@ -19,7 +21,9 @@
     "isQuestionPost": null,
     "isPopular": true,
     "postTag": "테마1",
-    "image": null
+    "image": null,
+    "likes": 12,
+    "comments": 0
   },
   {
     "title": "다이어트 식단 관리 다들 어떻게 하시나요?",
@@ -30,7 +34,9 @@
     "isQuestionPost": true,
     "isPopular": null,
     "postTag": "테마1",
-    "image": null
+    "image": null,
+    "likes": 12,
+    "comments": 0
   },
   {
     "title": "다이어트 식단 관리 다들 어떻게 하시나요?",
@@ -41,7 +47,9 @@
     "isQuestionPost": null,
     "isPopular": null,
     "postTag": "테마1",
-    "image": true
+    "image": true,
+    "likes": 12,
+    "comments": 0
   },
   {
     "title": "다이어트 식단 관리 다들 어떻게 하시나요?",
@@ -52,7 +60,9 @@
     "isQuestionPost": null,
     "isPopular": null,
     "postTag": "테마1",
-    "image": null
+    "image": null,
+    "likes": 12,
+    "comments": 0
   },
   {
     "title": "다이어트 식단 관리 다들 어떻게 하시나요?",
@@ -63,7 +73,9 @@
     "isQuestionPost": null,
     "isPopular": null,
     "postTag": "테마1",
-    "image": null
+    "image": null,
+    "likes": 12,
+    "comments": 0
   },
   {
     "title": "다이어트 식단 관리 다들 어떻게 하시나요?",
@@ -74,6 +86,8 @@
     "isQuestionPost": null,
     "isPopular": null,
     "postTag": "테마1",
-    "image": null
+    "image": null,
+    "likes": 12,
+    "comments": 0
   }
 ]

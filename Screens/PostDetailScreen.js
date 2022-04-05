@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import styled from 'styled-components';
 import {ThemeBox} from '../Components/ThemeBox';
 import {TopTab} from '../Components/TopTab_Post';
 
+import LikeIcon from '../Icon/icHeartBk24.svg';
+import CommentIcon from '../Icon/icCommentBk24.svg';
 const Container = styled(ScrollView)`
-  flex: 1;
   background-color: white;
 `;
 const MainContainer = styled(View)`
@@ -36,6 +37,9 @@ const Dot = styled(Text)`
   font-size: 11px;
   font-weight: 400;
   color: rgb(229, 230, 232);
+
+  padding-right: 6px;
+  padding-left: 6px;
 `;
 const ElapsedTime = styled(Text)`
   font-size: 11px;
@@ -54,20 +58,40 @@ const ButtonContainer = styled(View)`
   border-bottom-width: 1px;
   border-color: rgb(246, 246, 248);
   padding-left: 16px;
-  align-itmes: center;
+  align-items: center;
   flex-direction: row;
 `;
-
-import Mockdata from '../Services/PostMock.json';
-export const PostDetailScreen = ({datas = {}, navigation}) => {
+const Likes = styled(Text)`
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(70, 71, 72);
+  margin-left: 4px;
+  margin-right: 16px;
+`;
+const Comments = styled(Text)`
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(70, 71, 72);
+  margin-left: 4px;
+`;
+const CommentContainer = styled(View)``;
+import SmileyIcon from '../Icon/icSmile24.svg';
+export const PostDetailScreen = ({route, navigation}) => {
+  const [likeClicked, setLikeClicked] = useState(true);
   const {
     title = 'Default Title',
     id,
     nickname = '이지민',
     elapsed_time = '999분 전',
     mainText = 'hello my name is jimin',
-  } = datas;
-  console.log(datas);
+    likes = '-1',
+    isQuestionPost,
+    isPopular,
+    postTag,
+    image,
+    comments = '-1',
+  } = route.params.datas;
+  console.log(route.params.datas);
   return (
     <Container>
       <TopTab navigation={navigation} />
@@ -81,7 +105,15 @@ export const PostDetailScreen = ({datas = {}, navigation}) => {
         </DetailsWrapper>
         <MainText>{mainText}</MainText>
       </MainContainer>
-      <ButtonContainer></ButtonContainer>
+      <ButtonContainer>
+        <LikeIcon />
+        <Likes>{likes}</Likes>
+        <CommentIcon />
+        <Comments>{comments}</Comments>
+      </ButtonContainer>
+      <CommentContainer>
+        <SmileyIcon />
+      </CommentContainer>
     </Container>
   );
 };

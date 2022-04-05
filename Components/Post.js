@@ -132,6 +132,8 @@ export const Post = props => {
       isPopular,
       postTag,
       image,
+      likes: '0',
+      comments: '-1',
     },
   } = props;
 
@@ -169,15 +171,15 @@ export const Post = props => {
       <BottomWrapper>
         <BottomLeft>
           <LikeIcon />
-          <Likes>12</Likes>
+          <Likes>{datas.likes}</Likes>
           <CommentIcon />
 
-          <Comments>8</Comments>
+          <Comments>{datas.comments}</Comments>
         </BottomLeft>
         <BottomRight>
-          <Nickname>닉네임</Nickname>
+          <Nickname>{datas.nickname}</Nickname>
           <Dot>·</Dot>
-          <ElapsedTime>1분전</ElapsedTime>
+          <ElapsedTime>{datas.elapsed_time}</ElapsedTime>
         </BottomRight>
       </BottomWrapper>
     </Container>

@@ -60,7 +60,6 @@ export const AllTabScreen = ({navigation}) => {
               onPress={() => {
                 navigation.navigate('PostDetailScreen', {
                   datas: item,
-                  navigation: {navigation},
                 });
               }}>
               <Post navigation={navigation} datas={item} />
