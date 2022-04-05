@@ -10,7 +10,7 @@ import {
 import styled from 'styled-components/native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import {TopTab} from './TopTab';
+import {TopTab} from '../Components/TopTab_BottomTabNav';
 import {TopNav} from '../Navigation/TopNav';
 
 const MainContainer = styled(ScrollView)`

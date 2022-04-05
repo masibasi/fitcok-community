@@ -1,10 +1,12 @@
 import React from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View, FlatList} from 'react-native';
 import styled from 'styled-components/native';
 
-import {TopTab} from './TopTab';
+import {TopTab} from '../Components/TopTab_BottomTabNav';
 import {TopNav} from '../Navigation/TopNav';
 import {Post} from '../Components/Post';
+
+import mockData from '../Services/PostMock.json';
 
 import PencilIcon from '../Icon/icPencilWhite24.svg';
 
@@ -37,20 +39,36 @@ const ButtonText = styled(Text)`
   margin-right: 6px;
   margin-left: 6px;
 `;
+
+export const PostList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    //padding: 16,
+  },
+})``;
+
 export const AllTabScreen = ({navigation}) => {
   return (
     <ContentWrapper>
       <TopTab />
       <TopNav title="all" navigation={navigation} />
-      <MainContainer>
-        <Post tag="테마1" />
-        <Post tag="테마1" popular={true} />
-        <Post tag="테마1" question />
-        <Post tag="테마1" image />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
-        <Post tag="테마1" />
-      </MainContainer>
+
+      <PostList
+        data={mockData}
+        renderItem={({item}) => {
+          return (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('PostDetailScreen', {
+                  datas: item,
+                  navigation: {navigation},
+                });
+              }}>
+              <Post navigation={navigation} datas={item} />
+            </TouchableOpacity>
+          );
+        }}
+        keyExtractor={item => item.id}
+      />
       <ButtonWrapper>
         <WritePostButton>
           <PencilIcon />

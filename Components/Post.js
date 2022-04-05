@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
 import LikeIcon from '../Icon/icHeartBk18.svg';
 
-const Container = styled(TouchableOpacity)`
+import mockData from '../Services/PostMock.json';
+const Container = styled(View)`
   height: 134px;
   background-color: white;
   padding-left: 16px;
@@ -17,9 +18,10 @@ const MainWrapper = styled(View)`
   flex-direction: row;
   flex: 1;
 `;
-const MainLeftWrapper = styled(View)``;
+const MainLeftWrapper = styled(View)`
+  padding-top: 16px;
+`;
 const TagWrapper = styled(View)`
-  margin-top: 16px;
   flex-direction: row;
   // background-color: green;
 `;
@@ -119,32 +121,41 @@ const ImageCount = styled(Text)`
   color: white;
 `;
 export const Post = props => {
-  let isQuestionPost = props.question;
-  let isPopular = props.popular;
-  let postTag = props.tag;
-  let image = props.image;
+  const {
+    datas = {
+      title: 'Default Title',
+      id: '',
+      nickname: '이지민',
+      elapsed_time: '999분 전',
+      mainText: 'hello my name is jimin',
+      isQuestionPost,
+      isPopular,
+      postTag,
+      image,
+    },
+  } = props;
 
   return (
     <Container>
       <MainWrapper>
         <MainLeftWrapper>
           <TagWrapper>
-            {isPopular && (
+            {datas.isPopular && (
               <HashtagBox popular>
                 <HashTag popular>인기</HashTag>
               </HashtagBox>
             )}
             <HashtagBox>
-              <HashTag>{postTag}</HashTag>
+              <HashTag>{datas.postTag}</HashTag>
             </HashtagBox>
           </TagWrapper>
           <TitleWrapper>
-            {isQuestionPost && <QuestionIcon>Q. </QuestionIcon>}
+            {datas.isQuestionPost && <QuestionIcon>Q. </QuestionIcon>}
 
-            <PostTitle>다이어트 식단관리 다들 어떻게 하시나요?</PostTitle>
+            <PostTitle>{datas.title}</PostTitle>
           </TitleWrapper>
         </MainLeftWrapper>
-        {image && (
+        {datas.image && (
           <>
             <ImageWrapper>
               <MockImage source={Mock} />

@@ -5,6 +5,7 @@ import {AllTabScreen} from '../Screens/AllTabScreen';
 import {FeedTabScreen} from '../Screens/FeedTabScreen';
 import {GroupTabScreen} from '../Screens/GroupTabScreen';
 import {TestTabScreen} from '../Screens/TestTabScreen';
+import {PostDetailScreen} from '../Screens/PostDetailScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +16,7 @@ export const CommunityScreenNav = ({navigation}) => {
       <Tab.Screen name="피드" component={FeedTabScreen} />
       <Tab.Screen name="공동구매" component={GroupTabScreen} />
       <Tab.Screen name="체험단" component={TestTabScreen} />
+      <Tab.Screen name="PostDetailScreen" component={PostDetailScreen} />
     </Tab.Navigator>
   );
 };
