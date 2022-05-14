@@ -7,7 +7,8 @@ import {TopTab} from '../Components/TopTab_Post';
 import LikeIcon from '../Icon/icHeartBk24.svg';
 import CommentIcon from '../Icon/icCommentBk24.svg';
 const Container = styled(ScrollView)`
-  background-color: white;
+  background-color: green;
+  flex: 1;
 `;
 const MainContainer = styled(View)`
   margin-top: 4px;
@@ -74,7 +75,17 @@ const Comments = styled(Text)`
   color: rgb(70, 71, 72);
   margin-left: 4px;
 `;
-const CommentContainer = styled(View)``;
+
+const CommentContainer = styled(View)`
+  flex: 1;
+  background-color: yellow;
+`;
+
+const NoCommentDisplay = styled(View)`
+  flex: 1;
+  // background-color: white;
+`;
+
 import SmileyIcon from '../Icon/icSmile24.svg';
 export const PostDetailScreen = ({route, navigation}) => {
   const [likeClicked, setLikeClicked] = useState(true);
@@ -91,7 +102,7 @@ export const PostDetailScreen = ({route, navigation}) => {
     image,
     comments = '-1',
   } = route.params.datas;
-  console.log(route.params.datas);
+
   return (
     <Container>
       <TopTab navigation={navigation} />
@@ -112,7 +123,9 @@ export const PostDetailScreen = ({route, navigation}) => {
         <Comments>{comments}</Comments>
       </ButtonContainer>
       <CommentContainer>
-        <SmileyIcon />
+        <NoCommentDisplay>
+          <SmileyIcon />
+        </NoCommentDisplay>
       </CommentContainer>
     </Container>
   );

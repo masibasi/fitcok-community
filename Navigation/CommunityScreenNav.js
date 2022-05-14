@@ -16,7 +16,6 @@ export const CommunityScreenNav = ({navigation}) => {
       <Tab.Screen name="피드" component={FeedTabScreen} />
       <Tab.Screen name="공동구매" component={GroupTabScreen} />
       <Tab.Screen name="체험단" component={TestTabScreen} />
-      <Tab.Screen name="PostDetailScreen" component={PostDetailScreen} />
     </Tab.Navigator>
   );
 };
