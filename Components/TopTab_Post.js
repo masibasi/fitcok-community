@@ -1,10 +1,12 @@
-import React from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {Image, Text, TouchableOpacity, View, Alert} from 'react-native';
 import styled from 'styled-components/native';
 
 import BackIcon from '../Icon/icChevronLeftBk24.svg';
 import NotificationIcon from '../Icon/icBellBk24.svg';
 import DotMenu from '../Icon/icDotmenuBk24.svg';
+import BellOnIcon from '../Icon/icBellonBk24.svg';
+import BellOffIcon from '../Icon/icBelloffBk24.svg';
 
 const TopContainer = styled(View)`
   background-color: white;
@@ -30,6 +32,7 @@ const NotificationIconWrapper = styled(TouchableOpacity)``;
 const DotMenuWrapper = styled(TouchableOpacity)``;
 
 export const TopTab = ({navigation}) => {
+  const [isBellOn, setIsBellOn] = useState(true);
   return (
     <TopContainer>
       <BackIconWrapper
@@ -39,8 +42,12 @@ export const TopTab = ({navigation}) => {
         <BackIcon />
       </BackIconWrapper>
       <RightContainer>
-        <NotificationIconWrapper>
-          <NotificationIcon />
+        <NotificationIconWrapper
+          onPress={() => {
+            setIsBellOn(!isBellOn);
+            //Alert.alert('Modal has been closed.');
+          }}>
+          {isBellOn ? <BellOnIcon /> : <BellOffIcon />}
         </NotificationIconWrapper>
         <DotMenuWrapper>
           <DotMenu />

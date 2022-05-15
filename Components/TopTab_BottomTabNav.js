@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 import MenuIcon from '../Icon/icMenuBk24.svg';
 import NotificationIcon from '../Icon/icBellBk24.svg';
+import CommentIcon from '../Icon/icContents24.svg';
 
 const TopContainer = styled(View)`
   background-color: white;
@@ -29,7 +30,12 @@ const IconWrapper = styled(View)`
   flex-direction: row;
   padding-bottom: 8px;
 `;
-const MenuIconWrapper = styled(TouchableOpacity)``;
+const MenuIconWrapper = styled(TouchableOpacity)`
+  margin-left: 8px;
+`;
+const CommentIconWrapper = styled(TouchableOpacity)`
+  margin-left: 8px;
+`;
 
 const NotificationButton = styled(TouchableOpacity)`
   margin-left: 8px;
@@ -45,6 +51,9 @@ export const TopTab = () => {
         <MenuIconWrapper>
           <MenuIcon />
         </MenuIconWrapper>
+        <CommentIconWrapper>
+          <CommentIcon />
+        </CommentIconWrapper>
         <NotificationButton>
           <NotificationIcon />
         </NotificationButton>
