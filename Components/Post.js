@@ -27,7 +27,7 @@ const TagWrapper = styled(View)`
 `;
 const HashtagBox = styled(View)`
   background-color: ${props =>
-    props.popular ? 'rgb(255,184,6)' : 'rgb(246,246,248)'};
+    props.popular ? 'rgb(24,25,26)' : 'rgb(246,246,248)'};
   width: 35px;
   height: 24px;
   align-items: center;
