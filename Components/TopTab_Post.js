@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {Image, Text, TouchableOpacity, View, Alert} from 'react-native';
 import styled from 'styled-components/native';
 
+import {useToast} from 'react-native-toast-notifications';
+
 import BackIcon from '../Icon/icChevronLeftBk24.svg';
 import NotificationIcon from '../Icon/icBellBk24.svg';
 import DotMenu from '../Icon/icDotmenuBk24.svg';
@@ -32,6 +34,7 @@ const NotificationIconWrapper = styled(TouchableOpacity)``;
 const DotMenuWrapper = styled(TouchableOpacity)``;
 
 export const TopTab = ({navigation}) => {
+  const toast = useToast();
   const [isBellOn, setIsBellOn] = useState(true);
   return (
     <TopContainer>
@@ -45,7 +48,9 @@ export const TopTab = ({navigation}) => {
         <NotificationIconWrapper
           onPress={() => {
             setIsBellOn(!isBellOn);
-            //Alert.alert('Modal has been closed.');
+            isBellOn
+              ? toast.show('이 게시글에 대한 알림을 켰습니다')
+              : toast.show('이 게시글에 대한 알림을 껐습니다');
           }}>
           {isBellOn ? <BellOnIcon /> : <BellOffIcon />}
         </NotificationIconWrapper>
