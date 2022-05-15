@@ -20,6 +20,7 @@ import CommentIcon from '../Icon/icCommentBk24.svg';
 
 import mockData from '../Services/PostMock.json';
 import {Post} from '../Components/Post';
+import {Comment} from '../Components/Comment';
 
 const Container = styled(KeyboardAwareScrollView)`
   background-color: white;
@@ -101,16 +102,6 @@ const CommentContainer = styled(View)`
   flex: 1;
 `;
 
-const SmileyIconWrapper = styled(View)`
-  padding: 16px;
-  padding-top: 0px;
-`;
-const NoCommentText = styled(Text)`
-  color: rgb(132, 133, 137);
-  font-size: 14px;
-  font-weight: 500;
-`;
-
 const EnterCommentWrapper = styled(View)`
   background-color: white;
 `;
@@ -179,23 +170,7 @@ export const PostDetailScreen = ({route, navigation}) => {
           <Comments>{comments}</Comments>
         </ButtonContainer>
         <CommentContainer>
-          {/* <PostList
-            data={mockData}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate('PostDetailScreen', {
-                      datas: item,
-                    });
-                  }}>
-                  <Post navigation={navigation} datas={item} />
-                </TouchableOpacity>
-              );
-            }}
-            keyExtractor={item => item.id}
-          /> */}
-          <NoCommentDisplay />
+          {comments > 0 ? <Comment /> : <NoCommentDisplay />}
         </CommentContainer>
       </Container>
       <EnterCommentWrapper>
