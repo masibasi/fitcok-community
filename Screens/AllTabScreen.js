@@ -23,7 +23,7 @@ const ButtonWrapper = styled(View)`
   align-items: center;
   justify-content: center;
 `;
-const WritePostButton = styled(TouchableOpacity)`
+const WritePostButton = styled(TouchableOpacity).attrs()`
   border-radius: 50px;
   width: 127px;
   height: 44px;
@@ -69,7 +69,10 @@ export const AllTabScreen = ({navigation}) => {
         keyExtractor={item => item.id}
       />
       <ButtonWrapper>
-        <WritePostButton>
+        <WritePostButton
+          onPress={() => {
+            navigation.navigate('WritePostScreen');
+          }}>
           <PencilIcon />
           <ButtonText>글 쓰기</ButtonText>
         </WritePostButton>

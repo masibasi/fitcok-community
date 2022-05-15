@@ -6,15 +6,20 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  KeyboardAvoidingView,
+  FlatList,
 } from 'react-native';
 import styled from 'styled-components';
 import {ThemeBox} from '../Components/ThemeBox';
 import {TopTab} from '../Components/TopTab_Post';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
+import {NoCommentDisplay} from '../Components/NoCommentDisplay';
+
 import LikeIcon from '../Icon/icHeartBk24.svg';
 import CommentIcon from '../Icon/icCommentBk24.svg';
+
+import mockData from '../Services/PostMock.json';
+import {Post} from '../Components/Post';
 
 const Container = styled(KeyboardAwareScrollView)`
   background-color: white;
@@ -131,8 +136,11 @@ const EnterCommentBtn = styled(TouchableOpacity)`
   top: 16px;
 `;
 
-import SmileyIcon from '../Icon/icSmile24.svg';
-import {NoCommentDisplay} from '../Components/NoCommentDisplay';
+export const PostList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    //padding: 16,
+  },
+})``;
 
 export const PostDetailScreen = ({route, navigation}) => {
   const [likeClicked, setLikeClicked] = useState(true);
@@ -171,6 +179,22 @@ export const PostDetailScreen = ({route, navigation}) => {
           <Comments>{comments}</Comments>
         </ButtonContainer>
         <CommentContainer>
+          {/* <PostList
+            data={mockData}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('PostDetailScreen', {
+                      datas: item,
+                    });
+                  }}>
+                  <Post navigation={navigation} datas={item} />
+                </TouchableOpacity>
+              );
+            }}
+            keyExtractor={item => item.id}
+          /> */}
           <NoCommentDisplay />
         </CommentContainer>
       </Container>
