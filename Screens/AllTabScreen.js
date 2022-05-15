@@ -67,6 +67,17 @@ export const AllTabScreen = ({navigation}) => {
           );
         }}
         keyExtractor={item => item.id}
+        // ItemSeparatorComponent={<View></View>}
+        ListFooterComponent={
+          <View
+            style={{
+              height: 80,
+              width: '100%',
+              backgroundColor: 'white',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}></View>
+        }
       />
       <ButtonWrapper>
         <WritePostButton
