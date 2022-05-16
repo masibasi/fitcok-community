@@ -21,6 +21,7 @@ import CommentIcon from '../Icon/icCommentBk24.svg';
 import mockData from '../Services/PostMock.json';
 import {Post} from '../Components/Post';
 import {Comment} from '../Components/Comment';
+import {ReComment} from '../Components/ReComment';
 
 const Container = styled(KeyboardAwareScrollView)`
   background-color: white;
@@ -171,6 +172,7 @@ export const PostDetailScreen = ({route, navigation}) => {
         </ButtonContainer>
         <CommentContainer>
           {comments > 0 ? <Comment /> : <NoCommentDisplay />}
+          <ReComment />
         </CommentContainer>
       </Container>
       <EnterCommentWrapper>

@@ -10,11 +10,12 @@ import mockData from '../Services/PostMock.json';
 const Container = styled(View)`
   border-top-width: 1px;
   border-color: rgb(246, 246, 248);
-  height: 150px;
-  // background-color: red;
-  padding-left: 16px;
-  padding-top: 16px;
-  padding-right: 16px;
+  border-radius: 6px;
+  height: 110px;
+  background-color: rgb(246, 246, 248);
+  margin-left: 53px;
+  margin-right: 16px;
+  padding: 16px;
   justify-content: space-between;
 `;
 const ContentWrapper = styled(View)``;
@@ -40,13 +41,10 @@ const CommentText = styled(Text)`
 `;
 const BottomWrapper = styled(View)`
   flex-direction: row;
-  margin-bottom: 12px;
 `;
 const DaysAgo = styled(Text)`
   color: rgb(132, 133, 137);
   padding-right: 8px;
-  border-right-width: 1px;
-  border-color: rgb(229, 230, 232);
   font-size: 12px;
 `;
 const AddCommentWrapper = styled(TouchableOpacity)``;
@@ -55,7 +53,7 @@ const AddCommentForComment = styled(Text)`
   color: rgb(132, 133, 137);
   padding-left: 8px;
 `;
-export const Comment = props => {
+export const ReComment = props => {
   const {
     datas = {
       title: 'Default Title',
@@ -79,22 +77,15 @@ export const Comment = props => {
         <TopWrapper>
           <WriterWrapper>
             <Writer>매콤한 닭가슴살</Writer>
-            {datas.writer ? <WriterBadge /> : null}
           </WriterWrapper>
           <DotMenuWrapper>
             <DotMenu />
           </DotMenuWrapper>
         </TopWrapper>
-        <CommentText>
-          샐러드 배달 시켜서 먹고 있습니다~! {'\n'}요즘에 맛도 다양하게 나와서
-          식단조절 하는 것 {'\n'}같지가 않아요
-        </CommentText>
+        <CommentText>저도 샐러드로 다이어트 성공했어요</CommentText>
       </ContentWrapper>
       <BottomWrapper>
         <DaysAgo>1달전</DaysAgo>
-        <AddCommentWrapper>
-          <AddCommentForComment>답글쓰기</AddCommentForComment>
-        </AddCommentWrapper>
       </BottomWrapper>
     </Container>
   );
