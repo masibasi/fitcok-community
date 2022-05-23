@@ -1,0 +1,18 @@
+<svg width="375" height="94" viewBox="0 0 375 94" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#FFF" d="M0 0h375v94H0z"/>
+        <g transform="translate(16 25)">
+            <rect fill="#5CB7F5" width="51" height="20" rx="10"/>
+            <text font-family="AppleSDGothicNeo-Bold, Apple SD Gothic Neo" font-size="10" font-weight="bold" fill="#FFF">
+                        <tspan x="8" y="13">커뮤니티</tspan>
+                    </text>
+        </g>
+        <text font-family="SpoqaHanSansNeo-Regular, Spoqa Han Sans Neo" font-size="14" letter-spacing="-.2" fill="#000">
+                    <tspan x="79" y="38">공지사항 제목이 들어갑니다</tspan>
+                </text>
+        <text font-family="SpoqaHanSansNeo-Regular, Spoqa Han Sans Neo" font-size="12" letter-spacing="-.2" fill="#BABBC0">
+                    <tspan x="79" y="62">2021년 6월 30일 14:00</tspan>
+                </text>
+        <path fill="#F6F6F8" d="M0 93h375v1H0z"/>
+    </g>
+</svg>
