@@ -138,15 +138,15 @@ export const PostDetailScreen = ({route, navigation}) => {
   const [likeClicked, setLikeClicked] = useState(true);
   const {
     title = 'Default Title',
-    id,
+    id = 0,
     nickname = '이지민',
     elapsed_time = '999분 전',
     mainText = 'hello my name is jimin',
     likes = '-1',
-    isQuestionPost,
-    isPopular,
-    postTag,
-    image,
+    isQuestionPost = false,
+    isPopular = false,
+    postTag = false,
+    image = null,
     comments = '-1',
   } = route.params.datas;
 

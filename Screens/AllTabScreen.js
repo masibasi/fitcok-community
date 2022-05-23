@@ -49,7 +49,7 @@ export const PostList = styled(FlatList).attrs({
 export const AllTabScreen = ({navigation}) => {
   return (
     <ContentWrapper>
-      <TopTab />
+      <TopTab navigation={navigation} />
       <TopNav title="all" navigation={navigation} />
 
       <PostList

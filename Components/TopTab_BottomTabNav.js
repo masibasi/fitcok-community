@@ -41,14 +41,17 @@ const NotificationButton = styled(TouchableOpacity)`
   margin-left: 8px;
 `;
 
-export const TopTab = () => {
+export const TopTab = ({navigation}) => {
   return (
     <TopContainer>
       <TitleWrapper>
         <PageTitle>커뮤니티</PageTitle>
       </TitleWrapper>
       <IconWrapper>
-        <MenuIconWrapper>
+        <MenuIconWrapper
+          onPress={() => {
+            navigation.navigate('CategorySettingsScreen');
+          }}>
           <MenuIcon />
         </MenuIconWrapper>
         <CommentIconWrapper>
