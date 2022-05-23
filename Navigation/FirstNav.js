@@ -6,6 +6,7 @@ import {BottomTabNav} from './BottomTabNav';
 import {PostDetailScreen} from '../Screens/PostDetailScreen';
 import {WritePostScreen} from '../Screens/WritePostScreen';
 import {CategorySettingsScreen} from '../Screens/CategorySettingsScreen';
+import {NotificationsScreen} from '../Screens/NotificationsScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,10 @@ export const FirstNav = () => {
       <Stack.Screen
         name="CategorySettingsScreen"
         component={CategorySettingsScreen}
+      />
+      <Stack.Screen
+        name="NotificationsScreen"
+        component={NotificationsScreen}
       />
     </Stack.Navigator>
   );

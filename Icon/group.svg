@@ -1,0 +1,8 @@
+<svg width="51" height="20" viewBox="0 0 51 20" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <rect fill="#7DD842" width="51" height="20" rx="10"/>
+        <text font-family="AppleSDGothicNeo-Bold, Apple SD Gothic Neo" font-size="10" font-weight="bold" fill="#FFF">
+                        <tspan x="13" y="13">이벤트</tspan>
+                    </text>
+    </g>
+</svg>

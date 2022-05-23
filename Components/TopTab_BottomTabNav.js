@@ -57,7 +57,10 @@ export const TopTab = ({navigation}) => {
         <CommentIconWrapper>
           <CommentIcon />
         </CommentIconWrapper>
-        <NotificationButton>
+        <NotificationButton
+          onPress={() => {
+            navigation.navigate('NotificationsScreen');
+          }}>
           <NotificationIcon />
         </NotificationButton>
       </IconWrapper>
