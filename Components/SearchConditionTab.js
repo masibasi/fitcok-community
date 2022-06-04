@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 
-import Icon from 'react-native-vector-icons/Ionicons';
 
 const Container = styled(View)`
   height: 64px;
@@ -61,7 +60,6 @@ export default SearchConditionTab = () => {
     <Container>
       <SettingsButton>
         <SettingsText>설정</SettingsText>
-        <Icon name="options" size={14} color="white" />
       </SettingsButton>
       <DailyButton>
         <DailyText>#일상</DailyText>

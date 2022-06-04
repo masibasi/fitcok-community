@@ -41,7 +41,8 @@ const NotificationButton = styled(TouchableOpacity)`
   margin-left: 8px;
 `;
 
-export const TopTab = ({navigation}) => {
+export const TopTab = props => {
+  let navigation = props.navigation;
   return (
     <TopContainer>
       <TitleWrapper>
