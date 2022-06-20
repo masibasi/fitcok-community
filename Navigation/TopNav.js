@@ -43,12 +43,12 @@ const ThemeTabButton = styled(TouchableOpacity)``;
 const Highlight = styled(View)`
   position: absolute;
   width: ${props =>
-    props.all ? '31px' : props.feed ? '30px' : props.group ? '40px' : '30px'};
+    props.all ? '28px' : props.feed ? '30px' : props.group ? '40px' : '30px'};
   height: 8px;
   background-color: 'rgb(255,184,6)';
   bottom: 17px;
   left: ${props =>
-    props.all ? '17px' : props.feed ? '72px' : props.group ? '120px' : '199px'};
+    props.all ? '16px' : props.feed ? '72px' : props.group ? '120px' : '199px'};
 `;
 export const TopNav = props => {
   let tabTitle = props.title;
