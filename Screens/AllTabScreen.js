@@ -15,6 +15,7 @@ const MainContainer = styled(ScrollView)`
 `;
 const ContentWrapper = styled(View)`
   flex: 1;
+  background-color: white;
 `;
 const ButtonWrapper = styled(View)`
   position: absolute;
