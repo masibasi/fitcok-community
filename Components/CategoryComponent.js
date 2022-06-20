@@ -31,6 +31,11 @@ export const CategoryComponent = props => {
       <PinWrapper
         onPress={() => {
           setIsPinned(!isPinned);
+          props.setData([
+            {id: 1, category: '인기', isPinned: false},
+            {id: 2, category: '테마1', isPinned: false},
+            {id: 3, category: '테마2', isPinned: false},
+          ]);
         }}>
         {isPinned ? <PinIcon /> : <UnpinIcon />}
       </PinWrapper>

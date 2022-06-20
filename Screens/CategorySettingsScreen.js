@@ -9,12 +9,10 @@ import {
 } from 'react-native';
 import styled from 'styled-components/native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-
-import {Post} from '../Components/Post';
-import SearchConditionTab from '../Components/SearchConditionTab';
 import {TopTab} from '../Components/TopTab_SimpleTitle';
 import {CategoryComponent} from '../Components/CategoryComponent';
+
+import mockData from '../Services/CategoryListMock.json';
 
 const ContentWrapper = styled(View)`
   flex: 1;
@@ -70,15 +68,7 @@ const CatList = styled(FlatList)``;
 export const CategorySettingsScreen = ({navigation}) => {
   const [orderNew, setOrderNew] = useState(true);
   const [orderPop, setOrderPop] = useState(false);
-  const [data, setData] = useState([
-    {id: 1, category: '인기', isPinned: false},
-    {id: 2, category: '테마1', isPinned: false},
-    {id: 3, category: '테마2', isPinned: false},
-    {id: 4, category: '테마3', isPinned: false},
-    {id: 5, category: '테마4', isPinned: false},
-    {id: 6, category: '테마5', isPinned: false},
-    {id: 7, category: '테마6', isPinned: false},
-  ]);
+  const [data, setData] = useState(mockData);
 
   const getSortData = () => {
     const checkedData = [data].filter(item => item.checked === true);
