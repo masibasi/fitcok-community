@@ -27,7 +27,7 @@ export const CategoryComponent = props => {
 
   return (
     <Container>
-      <CategoryText>{props.category}</CategoryText>
+      <CategoryText>{props.item.category}</CategoryText>
       <PinWrapper
         onPress={() => {
           setIsPinned(!isPinned);

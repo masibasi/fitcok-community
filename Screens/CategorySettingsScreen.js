@@ -4,7 +4,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  FlatList,
   View,
 } from 'react-native';
 import styled from 'styled-components/native';
@@ -64,9 +64,29 @@ const CategoryText = styled(Text)`
   margin-top: 24px;
   margin-bottom: 16px;
 `;
+
+const CatList = styled(FlatList)``;
+
 export const CategorySettingsScreen = ({navigation}) => {
   const [orderNew, setOrderNew] = useState(true);
   const [orderPop, setOrderPop] = useState(false);
+  const [data, setData] = useState([
+    {id: 1, category: '인기', isPinned: false},
+    {id: 2, category: '테마1', isPinned: false},
+    {id: 3, category: '테마2', isPinned: false},
+    {id: 4, category: '테마3', isPinned: false},
+    {id: 5, category: '테마4', isPinned: false},
+    {id: 6, category: '테마5', isPinned: false},
+    {id: 7, category: '테마6', isPinned: false},
+  ]);
+
+  const getSortData = () => {
+    const checkedData = [data].filter(item => item.checked === true);
+    const uncheckedData = data.filter(item => item.checked !== true);
+    const sortedData = checkedData.concat(uncheckedData);
+    return sortedData;
+  };
+
   return (
     <ContentWrapper>
       <TopTab title="카테고리 설정" navigation={navigation} />
@@ -93,13 +113,24 @@ export const CategorySettingsScreen = ({navigation}) => {
       </TopContainer>
       <BottomContainer>
         <CategoryText>카테고리</CategoryText>
-        <CategoryComponent category="인기" />
-        <CategoryComponent category="테마1" />
-        <CategoryComponent category="테마2" />
-        <CategoryComponent category="테마3" />
-        <CategoryComponent category="테마4" />
-        <CategoryComponent category="테마5" />
-        <CategoryComponent category="테마6" />
+        <CatList
+          data={data}
+          renderItem={({item}) => {
+            return <CategoryComponent item={item} setData={setData} />;
+          }}
+          keyExtractor={item => item.id}
+          // ItemSeparatorComponent={<View></View>}
+          ListFooterComponent={
+            <View
+              style={{
+                height: 80,
+                width: '100%',
+                backgroundColor: 'white',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}></View>
+          }
+        />
       </BottomContainer>
     </ContentWrapper>
   );
