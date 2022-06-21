@@ -40,6 +40,7 @@ const ButtonText = styled(Text)`
   font-size: 14px;
   font-weight: bold;
 `;
+
 export const FeedTabScreen = ({navigation}) => {
   return (
     <ContentWrapper>

@@ -1,10 +1,11 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 
 import PinIcon from '../Icon/icPinActive24.svg';
 import UnpinIcon from '../Icon/icPinDisabled24.svg';
 import XBtnIcon from '../Icon/icCloseBk24.svg';
+import {CategoryContext} from '../Services/Categories/categories.context';
 
 const Container = styled(View)`
   height: 56px;
@@ -24,6 +25,24 @@ const PinWrapper = styled(TouchableOpacity)`
 `;
 export const CategoryComponent = props => {
   const [isPinned, setIsPinned] = useState(false);
+  const {categories, setCategories} = useContext(CategoryContext);
+  const catData = categories;
+
+  const setDataState = () => {
+    for (let i = 0; i < catData.length; i++) {
+      if (catData[i].id === props.item.id) {
+        catData[i].isPinned = isPinned;
+      }
+    }
+  };
+
+  // 핀을 누르면 json data의 isPinned 값을 변경해준다
+  useEffect(() => {
+    console.log('the state has changed', isPinned);
+    setDataState();
+    console.log(JSON.stringify(catData));
+    setCategories(catData);
+  }, [isPinned]);
 
   return (
     <Container>
@@ -31,11 +50,6 @@ export const CategoryComponent = props => {
       <PinWrapper
         onPress={() => {
           setIsPinned(!isPinned);
-          props.setData([
-            {id: 1, category: '인기', isPinned: false},
-            {id: 2, category: '테마1', isPinned: false},
-            {id: 3, category: '테마2', isPinned: false},
-          ]);
         }}>
         {isPinned ? <PinIcon /> : <UnpinIcon />}
       </PinWrapper>

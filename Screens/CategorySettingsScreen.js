@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {
   Image,
   ScrollView,
@@ -11,8 +11,7 @@ import styled from 'styled-components/native';
 
 import {TopTab} from '../Components/TopTab_SimpleTitle';
 import {CategoryComponent} from '../Components/CategoryComponent';
-
-import mockData from '../Services/CategoryListMock.json';
+import {CategoryContext} from '../Services/Categories/categories.context';
 
 const ContentWrapper = styled(View)`
   flex: 1;
@@ -68,14 +67,21 @@ const CatList = styled(FlatList)``;
 export const CategorySettingsScreen = ({navigation}) => {
   const [orderNew, setOrderNew] = useState(true);
   const [orderPop, setOrderPop] = useState(false);
-  const [data, setData] = useState(mockData);
+  const {categories, setCategoriesHandler} = useContext(CategoryContext);
 
-  const getSortData = () => {
-    const checkedData = [data].filter(item => item.checked === true);
+  //데이터의 순서를 바꿔주는 함수
+  const getSortData = data => {
+    const checkedData = data.filter(item => item.checked === true);
     const uncheckedData = data.filter(item => item.checked !== true);
     const sortedData = checkedData.concat(uncheckedData);
     return sortedData;
   };
+
+  //데이터가 바뀌면 리스트의 순서를 바꿔준다.
+  // useEffect(() => {
+  //   setData(getSortData());
+  //   console.log('data change');
+  // }, categories); // 현재 데이터가 안바뀌는 문제가 있음
 
   return (
     <ContentWrapper>
@@ -104,12 +110,11 @@ export const CategorySettingsScreen = ({navigation}) => {
       <BottomContainer>
         <CategoryText>카테고리</CategoryText>
         <CatList
-          data={data}
+          data={categories}
           renderItem={({item}) => {
-            return <CategoryComponent item={item} setData={setData} />;
+            return <CategoryComponent item={item} catData={categories} />;
           }}
           keyExtractor={item => item.id}
-          // ItemSeparatorComponent={<View></View>}
           ListFooterComponent={
             <View
               style={{
