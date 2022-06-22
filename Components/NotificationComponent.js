@@ -6,6 +6,7 @@ import PinIcon from '../Icon/icPinActive24.svg';
 import UnpinIcon from '../Icon/icPinDisabled24.svg';
 import EventBadge from '../Icon/group.svg';
 import CommunityBadge from '../Icon/cardNotification.svg';
+import {NotificationBadge} from './NotificationBadge';
 
 const Container = styled(TouchableOpacity)`
   height: 94px;
@@ -36,14 +37,15 @@ const TimeStampText = styled(Text)`
 
 export const NotificationComponent = props => {
   const [isChecked, setIsChecked] = useState(false);
-
+  console.log(props.tag);
   return (
     <Container
       state={isChecked}
       onPress={() => {
         setIsChecked(true);
       }}>
-      <EventBadge />
+      <NotificationBadge tag={props.tag} />
+
       <TextWrapper>
         <NotificationText>{props.text}</NotificationText>
         <TimeStampText>{props.time}</TimeStampText>

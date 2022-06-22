@@ -7,10 +7,10 @@
                         <tspan x="8" y="13">커뮤니티</tspan>
                     </text>
         </g>
-        <text font-family="SpoqaHanSansNeo-Regular, Spoqa Han Sans Neo" font-size="14" letter-spacing="-.2" fill="#000">
+        <text  font-size="14" letter-spacing="-.2" fill="#000">
                     <tspan x="79" y="38">공지사항 제목이 들어갑니다</tspan>
                 </text>
-        <text font-family="SpoqaHanSansNeo-Regular, Spoqa Han Sans Neo" font-size="12" letter-spacing="-.2" fill="#BABBC0">
+        <text font-size="12" letter-spacing="-.2" fill="#BABBC0">
                     <tspan x="79" y="62">2021년 6월 30일 14:00</tspan>
                 </text>
         <path fill="#F6F6F8" d="M0 93h375v1H0z"/>

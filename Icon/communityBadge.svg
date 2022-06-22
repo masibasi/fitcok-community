@@ -1,7 +1,7 @@
 <svg width="38" height="18" viewBox="0 0 38 18" xmlns="http://www.w3.org/2000/svg">
     <g transform="translate(1 1)" fill="none" fill-rule="evenodd">
         <rect stroke="#BABBC0" width="36" height="16" rx="2"/>
-        <text font-family="SpoqaHanSansNeo-Bold, Spoqa Han Sans Neo" font-size="10" font-weight="bold" letter-spacing="-.2" fill="#848589">
+        <text font-size="10" font-weight="bold" letter-spacing="-.2" fill="#848589">
                     <tspan x="4" y="12">작성자</tspan>
                 </text>
     </g>

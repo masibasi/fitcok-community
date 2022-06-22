@@ -71,22 +71,27 @@ export const NotificationsScreen = ({navigation}) => {
       <TopTab title="알림" navigation={navigation} />
       <MainContainer>
         <NotificationComponent
+          tag="피트니스"
           text="공지사항 제목이 들어갑니다"
           time="2021년 6월 30일 14:00"
         />
         <NotificationComponent
+          tag="이벤트"
           text="공지사항 제목이 들어갑니다"
           time="2021년 6월 30일 14:00"
         />
         <NotificationComponent
+          tag="커뮤니티"
           text="공지사항 제목이 들어갑니다"
           time="2021년 6월 30일 14:00"
         />
         <NotificationComponent
+          tag="공지"
           text="공지사항 제목이 들어갑니다"
           time="2021년 6월 30일 14:00"
         />
         <NotificationComponent
+          tag="커머스"
           text="공지사항 제목이 들어갑니다"
           time="2021년 6월 30일 14:00"
         />
