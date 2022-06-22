@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, Image} from 'react-native';
 import styled from 'styled-components';
 
 const Container = styled(View)`
@@ -51,7 +51,7 @@ export const NoCommentDisplay = () => {
   return (
     <Container>
       <SmileyIconWrapper>
-        <SmileyIcon />
+        <Image source={require('../Icon/icSmile24.png')} />
       </SmileyIconWrapper>
       <NoCommentText>아직 작성된 댓글이 없습니다.</NoCommentText>
       <NoCommentText>새로운 댓글을 남겨주세요</NoCommentText>

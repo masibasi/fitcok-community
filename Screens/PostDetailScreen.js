@@ -92,6 +92,8 @@ const Likes = styled(Text)`
   margin-left: 4px;
   margin-right: 16px;
 `;
+const LikeButtonWrapper = styled(TouchableOpacity)``;
+const CommentButtonWrapper = styled(TouchableOpacity)``;
 const Comments = styled(Text)`
   font-size: 14px;
   font-weight: 500;
@@ -165,14 +167,24 @@ export const PostDetailScreen = ({route, navigation}) => {
           <MainText>{mainText}</MainText>
         </MainContainer>
         <ButtonContainer>
-          <LikeIcon />
+          <LikeButtonWrapper>
+            <LikeIcon />
+          </LikeButtonWrapper>
           <Likes>{likes}</Likes>
-          <CommentIcon />
+          <CommentButtonWrapper>
+            <CommentIcon />
+          </CommentButtonWrapper>
           <Comments>{comments}</Comments>
         </ButtonContainer>
         <CommentContainer>
-          {comments > 0 ? <Comment /> : <NoCommentDisplay />}
-          <ReComment />
+          {comments > 0 ? (
+            <>
+              <Comment />
+              <ReComment />
+            </>
+          ) : (
+            <NoCommentDisplay />
+          )}
         </CommentContainer>
       </Container>
       <EnterCommentWrapper>
