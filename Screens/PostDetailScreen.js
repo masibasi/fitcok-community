@@ -137,7 +137,6 @@ export const PostList = styled(FlatList).attrs({
 })``;
 
 export const PostDetailScreen = ({route, navigation}) => {
-  const [likeClicked, setLikeClicked] = useState(true);
   const {
     title = 'Default Title',
     id = 0,
@@ -150,6 +149,7 @@ export const PostDetailScreen = ({route, navigation}) => {
     postTag = false,
     image = null,
     comments = '-1',
+    comment = [],
   } = route.params.datas;
 
   return (
@@ -181,6 +181,9 @@ export const PostDetailScreen = ({route, navigation}) => {
             <>
               <Comment />
               <ReComment />
+              {comment.map(comment => {
+                return <Comment />;
+              })}
             </>
           ) : (
             <NoCommentDisplay />
