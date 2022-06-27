@@ -18,6 +18,8 @@ const NoCommentText = styled(Text)`
   color: rgb(132, 133, 137);
   font-size: 14px;
   font-weight: 500;
+  text-align: center;
+  line-height: 22px;
 `;
 
 const EnterCommentWrapper = styled(View)`
@@ -53,8 +55,9 @@ export const NoCommentDisplay = () => {
       <SmileyIconWrapper>
         <Image source={require('../Icon/icSmile24.png')} />
       </SmileyIconWrapper>
-      <NoCommentText>아직 작성된 댓글이 없습니다.</NoCommentText>
-      <NoCommentText>새로운 댓글을 남겨주세요</NoCommentText>
+      <NoCommentText>
+        아직 작성된 댓글이 없습니다.{'\n'}새로운 댓글을 남겨주세요
+      </NoCommentText>
     </Container>
   );
 };

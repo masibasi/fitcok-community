@@ -109,6 +109,11 @@ const CommentContainer = styled(View)`
 
 const EnterCommentWrapper = styled(View)`
   background-color: white;
+  shadow-color: rgb(0, 0, 0);
+  shadow-offset: {width: 0, height: 2};
+  shadow-opacity: 0.1;
+  shadow-radius: 9px;
+  elevation: 5;
 `;
 const EnterComment = styled(TextInput).attrs({
   placeholder: '댓글을 입력해주세요.',
