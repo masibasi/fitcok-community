@@ -16,7 +16,7 @@ export const CategoryContextProvider = ({children}) => {
     setCategories(cat);
   };
   useEffect(() => {
-    console.log(...catMock);
+    // console.log(...catMock);
     setCategories(...catMock);
   }, []);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {ScrollView, Text, TouchableOpacity, View, FlatList} from 'react-native';
 import styled from 'styled-components/native';
 
@@ -6,9 +6,9 @@ import {TopTab} from '../Components/TopTab_BottomTabNav';
 import {TopNav} from '../Navigation/TopNav';
 import {Post} from '../Components/Post';
 
-import mockData from '../Services/PostMock.json';
-
 import PencilIcon from '../Icon/icPencilWhite24.svg';
+
+import {PostContext} from '../Services/Posts/posts.context';
 
 const MainContainer = styled(ScrollView)`
   // background-color: turquoise;
@@ -48,13 +48,14 @@ export const PostList = styled(FlatList).attrs({
 })``;
 
 export const AllTabScreen = ({navigation}) => {
+  const {posts, setPosts} = useContext(PostContext);
   return (
     <ContentWrapper>
       <TopTab navigation={navigation} />
       <TopNav title="all" navigation={navigation} />
 
       <PostList
-        data={mockData}
+        data={posts}
         renderItem={({item}) => {
           return (
             <TouchableOpacity

@@ -40,7 +40,7 @@ export const CategoryComponent = props => {
   useEffect(() => {
     console.log('the state has changed', isPinned);
     setDataState();
-    console.log(JSON.stringify(catData));
+    // console.log(JSON.stringify(catData));
     setCategories(catData);
   }, [isPinned]);
 

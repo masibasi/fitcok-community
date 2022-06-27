@@ -110,13 +110,14 @@ const CommentContainer = styled(View)`
 const EnterCommentWrapper = styled(View)`
   background-color: white;
   shadow-color: rgb(0, 0, 0);
-  shadow-offset: {width: 0, height: 2};
+
   shadow-opacity: 0.1;
   shadow-radius: 9px;
   elevation: 5;
 `;
 const EnterComment = styled(TextInput).attrs({
   placeholder: '댓글을 입력해주세요.',
+  placeholderTextColor: 'rgb(116, 117, 118)',
 })`
   height: 40px;
   background-color: rgb(246, 246, 248);
@@ -144,7 +145,7 @@ export const PostList = styled(FlatList).attrs({
 })``;
 
 export const PostDetailScreen = ({route, navigation}) => {
-  const {
+  let {
     title = 'Default Title',
     id = 0,
     nickname = '이지민',
@@ -158,7 +159,6 @@ export const PostDetailScreen = ({route, navigation}) => {
     comments = '-1',
     comment = [],
   } = route.params.datas;
-
   return (
     <PostDetailWrapper>
       <TopTab navigation={navigation} />
@@ -174,7 +174,7 @@ export const PostDetailScreen = ({route, navigation}) => {
           <MainText>{mainText}</MainText>
         </MainContainer>
         <ButtonContainer>
-          <LikeButtonWrapper>
+          <LikeButtonWrapper onPress={() => (likes = likes + 1)}>
             <LikeIcon />
           </LikeButtonWrapper>
           <Likes>{likes}</Likes>
