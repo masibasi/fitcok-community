@@ -36,7 +36,6 @@ export const CategoryComponent = props => {
   }, []);
   // 핀을 누르면 json data의 isPinned 값을 변경후 데이터의 순서를 재배열 해준다
   useEffect(() => {
-    console.log(props.item.category + "'s state : ", isPinned);
     setDataState();
   }, [isPinned]);
 
@@ -48,20 +47,15 @@ export const CategoryComponent = props => {
       }
     }
     catTemp = getSortData(catTemp);
-    console.log(catTemp);
+
     setCategories(catTemp);
   };
 
   //데이터의 순서를 바꿔주는 함수
   const getSortData = data => {
-    // console.log(data);
     const checkedData = data.filter(item => item.isPinned == true);
-    // console.log('Checked list : ' + JSON.stringify(checkedData));
-
     const uncheckedData = data.filter(item => item.isPinned != true);
-    // console.log('Unchecked list : ' + JSON.stringify(uncheckedData));
     const sortedData = checkedData.concat(uncheckedData);
-    // console.log('Sorted list : ' + JSON.stringify(sortedData));
     return sortedData;
   };
 

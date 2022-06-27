@@ -15,6 +15,7 @@ const Container = styled(View)`
   background-color: rgb(246, 246, 248);
   margin-left: 53px;
   margin-right: 16px;
+  margin-bottom: 8px;
   padding: 16px;
   justify-content: space-between;
 `;
@@ -55,37 +56,27 @@ const AddCommentForComment = styled(Text)`
 `;
 export const ReComment = props => {
   const {
-    datas = {
-      title: 'Default Title',
-      id: '',
-      nickname: '이지민',
-      elapsed_time: '999분 전',
-      mainText: 'hello my name is jimin',
-      isQuestionPost: false,
-      isPopular: false,
-      postTag: null,
-      image: null,
-      likes: '0',
-      comments: '-1',
-      writer: true,
-    },
-  } = props;
+    recommentId = 0,
+    nickname = '매콤한 1',
+    elapsedTime = '213',
+    mainText = '저도 4 5 6',
+  } = props.item;
 
   return (
     <Container>
       <ContentWrapper>
         <TopWrapper>
           <WriterWrapper>
-            <Writer>매콤한 닭가슴살</Writer>
+            <Writer>{nickname}</Writer>
           </WriterWrapper>
           <DotMenuWrapper>
             <DotMenu />
           </DotMenuWrapper>
         </TopWrapper>
-        <CommentText>저도 샐러드로 다이어트 성공했어요</CommentText>
+        <CommentText>{mainText}</CommentText>
       </ContentWrapper>
       <BottomWrapper>
-        <DaysAgo>1달전</DaysAgo>
+        <DaysAgo>{elapsedTime}</DaysAgo>
       </BottomWrapper>
     </Container>
   );

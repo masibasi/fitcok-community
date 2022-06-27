@@ -37,7 +37,7 @@ const TimeStampText = styled(Text)`
 
 export const NotificationComponent = props => {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(props.tag);
+  // console.log(props.tag);
   return (
     <Container
       state={isChecked}

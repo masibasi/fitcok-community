@@ -103,10 +103,6 @@ const Comments = styled(Text)`
   margin-left: 4px;
 `;
 
-const CommentContainer = styled(View)`
-  flex: 1;
-`;
-
 const EnterCommentWrapper = styled(View)`
   background-color: white;
   shadow-color: rgb(0, 0, 0);
@@ -137,12 +133,9 @@ const EnterCommentBtn = styled(TouchableOpacity)`
   right: 22px;
   top: 16px;
 `;
-
-export const PostList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    //padding: 16,
-  },
-})``;
+const Spacer = styled(View)`
+  height: 80px;
+`;
 
 export const PostDetailScreen = ({route, navigation}) => {
   let {
@@ -183,19 +176,16 @@ export const PostDetailScreen = ({route, navigation}) => {
           </CommentButtonWrapper>
           <Comments>{comments}</Comments>
         </ButtonContainer>
-        <CommentContainer>
-          {comments > 0 ? (
-            <>
-              <Comment />
-              <ReComment />
-              {comment.map(comment => {
-                return <Comment />;
-              })}
-            </>
-          ) : (
-            <NoCommentDisplay />
-          )}
-        </CommentContainer>
+        {comments > 0 ? (
+          <>
+            {comment.map(comment => {
+              return <Comment key={comment.commentId} item={comment} />;
+            })}
+            <Spacer />
+          </>
+        ) : (
+          <NoCommentDisplay />
+        )}
       </Container>
       <EnterCommentWrapper>
         <EnterComment />

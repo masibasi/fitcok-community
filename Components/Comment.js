@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
 import DotMenu from '../Icon/icDotmenuBk24.svg';
 import WriterBadge from '../Icon/communityBadge.svg';
-import mockData from '../Services/PostMock.json';
+
+import {ReComment} from './ReComment';
 
 const Container = styled(View)`
   border-top-width: 1px;
@@ -57,45 +58,46 @@ const AddCommentForComment = styled(Text)`
 `;
 export const Comment = props => {
   const {
-    datas = {
-      title: 'Default Title',
-      id: '',
-      nickname: '이지민',
-      elapsed_time: '999분 전',
-      mainText: 'hello my name is jimin',
-      isQuestionPost: false,
-      isPopular: false,
-      postTag: null,
-      image: null,
-      likes: '0',
-      comments: '-1',
-      writer: true,
-    },
-  } = props;
+    title = 'Default Title',
+    id = '',
+    nickname = '이지민',
+    elapsed_time = '999분 전',
+    mainText = 'hello my name is jimin',
+    isQuestionPost = false,
+    isPopular = false,
+    postTag = null,
+    image = null,
+    likes = '0',
+    comments = '-1',
+    writer = true,
+    recomment = [],
+  } = props.item;
 
   return (
-    <Container>
-      <ContentWrapper>
-        <TopWrapper>
-          <WriterWrapper>
-            <Writer>매콤한 닭가슴살</Writer>
-            {datas.writer ? <WriterBadge /> : null}
-          </WriterWrapper>
-          <DotMenuWrapper>
-            <DotMenu />
-          </DotMenuWrapper>
-        </TopWrapper>
-        <CommentText>
-          샐러드 배달 시켜서 먹고 있습니다~! {'\n'}요즘에 맛도 다양하게 나와서
-          식단조절 하는 것 {'\n'}같지가 않아요
-        </CommentText>
-      </ContentWrapper>
-      <BottomWrapper>
-        <DaysAgo>1달전</DaysAgo>
-        <AddCommentWrapper>
-          <AddCommentForComment>답글쓰기</AddCommentForComment>
-        </AddCommentWrapper>
-      </BottomWrapper>
-    </Container>
+    <>
+      <Container>
+        <ContentWrapper>
+          <TopWrapper>
+            <WriterWrapper>
+              <Writer>{nickname}</Writer>
+              {writer ? <WriterBadge /> : null}
+            </WriterWrapper>
+            <DotMenuWrapper>
+              <DotMenu />
+            </DotMenuWrapper>
+          </TopWrapper>
+          <CommentText>{mainText}</CommentText>
+        </ContentWrapper>
+        <BottomWrapper>
+          <DaysAgo>1달전</DaysAgo>
+          <AddCommentWrapper>
+            <AddCommentForComment>답글쓰기</AddCommentForComment>
+          </AddCommentWrapper>
+        </BottomWrapper>
+      </Container>
+      {recomment.map(recomment => {
+        return <ReComment key={recomment.recommentId} item={recomment} />;
+      })}
+    </>
   );
 };
