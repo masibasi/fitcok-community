@@ -7,6 +7,7 @@ import UnpinIcon from '../Icon/icPinDisabled24.svg';
 import XBtnIcon from '../Icon/icCloseBk24.svg';
 import {CategoryContext} from '../Services/Categories/categories.context';
 import {catMock} from '../Services/Categories/categoryListMock';
+import {check} from 'prettier';
 
 const Container = styled(View)`
   height: 56px;
@@ -28,21 +29,41 @@ export const CategoryComponent = props => {
   const [isPinned, setIsPinned] = useState(false);
   const {categories, setCategories} = useContext(CategoryContext);
 
+  let catTemp = categories;
+
+  useEffect(() => {
+    setIsPinned(props.item.isPinned);
+  }, []);
+  // 핀을 누르면 json data의 isPinned 값을 변경후 데이터의 순서를 재배열 해준다
+  useEffect(() => {
+    console.log(props.item.category + "'s state : ", isPinned);
+    setDataState();
+  }, [isPinned]);
+
+  //카테고리 체크상태를 반영해서 카테고리 정보를 업데이트한다
   const setDataState = () => {
-    for (let i = 0; i < catData.length; i++) {
-      if (catData[i].id === props.item.id) {
-        catData[i].isPinned = isPinned;
+    for (let i = 0; i < catTemp.length; i++) {
+      if (catTemp[i].id === props.item.id) {
+        catTemp[i].isPinned = isPinned;
       }
     }
+    catTemp = getSortData(catTemp);
+    console.log(catTemp);
+    setCategories(catTemp);
   };
 
-  // 핀을 누르면 json data의 isPinned 값을 변경해준다
-  // useEffect(() => {
-  //   console.log('the state has changed', isPinned);
-  //   setDataState();
-  //   // console.log(JSON.stringify(catData));
-  //   setCategories(catData);
-  // }, [isPinned]);
+  //데이터의 순서를 바꿔주는 함수
+  const getSortData = data => {
+    // console.log(data);
+    const checkedData = data.filter(item => item.isPinned == true);
+    // console.log('Checked list : ' + JSON.stringify(checkedData));
+
+    const uncheckedData = data.filter(item => item.isPinned != true);
+    // console.log('Unchecked list : ' + JSON.stringify(uncheckedData));
+    const sortedData = checkedData.concat(uncheckedData);
+    // console.log('Sorted list : ' + JSON.stringify(sortedData));
+    return sortedData;
+  };
 
   return (
     <Container>

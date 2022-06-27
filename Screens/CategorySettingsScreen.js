@@ -69,19 +69,11 @@ export const CategorySettingsScreen = ({navigation}) => {
   const [orderNew, setOrderNew] = useState(true);
   const [orderPop, setOrderPop] = useState(false);
   const {categories, setCategories} = useContext(CategoryContext);
-  //데이터의 순서를 바꿔주는 함수
-  const getSortData = data => {
-    const checkedData = data.filter(item => item.checked === true);
-    const uncheckedData = data.filter(item => item.checked !== true);
-    const sortedData = checkedData.concat(uncheckedData);
-    return sortedData;
-  };
 
-  //데이터가 바뀌면 리스트의 순서를 바꿔준다.
+  // 데이터가 바뀌면 리스트의 순서를 바꿔준다.
   // useEffect(() => {
-  //   setData(getSortData());
   //   console.log('data change');
-  // }, categories); // 현재 데이터가 안바뀌는 문제가 있음
+  // }, categories);
 
   return (
     <ContentWrapper>

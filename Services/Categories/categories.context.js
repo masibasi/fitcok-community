@@ -13,21 +13,20 @@ export const CategoryContext = createContext();
 export const CategoryContextProvider = ({children}) => {
   const [categories, setCategories] = useState([]);
 
+  const value = useMemo(() => ({categories, setCategories}), [categories]);
+
   const retrieveCategories = () => {
     setCategories(catMock);
     console.log('Category Data Retrieved!');
   };
+
   useEffect(() => {
-    setCategories(catMock);
-    console.log('cat data : ' + categories);
-  });
+    retrieveCategories();
+    // console.log('cat data : ' + categories);
+  }, []);
 
   return (
-    <CategoryContext.Provider
-      value={{
-        categories,
-        setCategories,
-      }}>
+    <CategoryContext.Provider value={value}>
       {children}
     </CategoryContext.Provider>
   );
