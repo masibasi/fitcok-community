@@ -74,6 +74,8 @@ const MainText = styled(Text)`
   font-size: 14px;
   font-weight: 400;
   color: rgb(70, 71, 72);
+  line-height: 22px;
+  letter-spacing: -0.2px;
 `;
 const ButtonContainer = styled(View)`
   height: 48px;
