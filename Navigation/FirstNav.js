@@ -10,28 +10,31 @@ import {NotificationsScreen} from '../Screens/NotificationsScreen';
 
 import {ToastProvider} from 'react-native-toast-notifications';
 import {PostContextProvider} from '../Services/Posts/posts.context';
+import {CategoryContextProvider} from '../Services/Categories/categories.context';
 
 const Stack = createStackNavigator();
 
 export const FirstNav = () => {
   return (
     <PostContextProvider>
-      <Stack.Navigator
-        screenOptions={() => ({
-          headerShown: false,
-        })}>
-        <Stack.Screen name="BottomTabNav" component={BottomTabNav} />
-        <Stack.Screen name="PostDetailScreen" component={PostDetailScreen} />
-        <Stack.Screen name="WritePostScreen" component={WritePostScreen} />
-        <Stack.Screen
-          name="CategorySettingsScreen"
-          component={CategorySettingsScreen}
-        />
-        <Stack.Screen
-          name="NotificationsScreen"
-          component={NotificationsScreen}
-        />
-      </Stack.Navigator>
+      <CategoryContextProvider>
+        <Stack.Navigator
+          screenOptions={() => ({
+            headerShown: false,
+          })}>
+          <Stack.Screen name="BottomTabNav" component={BottomTabNav} />
+          <Stack.Screen name="PostDetailScreen" component={PostDetailScreen} />
+          <Stack.Screen name="WritePostScreen" component={WritePostScreen} />
+          <Stack.Screen
+            name="CategorySettingsScreen"
+            component={CategorySettingsScreen}
+          />
+          <Stack.Screen
+            name="NotificationsScreen"
+            component={NotificationsScreen}
+          />
+        </Stack.Navigator>
+      </CategoryContextProvider>
     </PostContextProvider>
   );
 };

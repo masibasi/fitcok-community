@@ -6,6 +6,7 @@ import PinIcon from '../Icon/icPinActive24.svg';
 import UnpinIcon from '../Icon/icPinDisabled24.svg';
 import XBtnIcon from '../Icon/icCloseBk24.svg';
 import {CategoryContext} from '../Services/Categories/categories.context';
+import {catMock} from '../Services/Categories/categoryListMock';
 
 const Container = styled(View)`
   height: 56px;
@@ -26,7 +27,6 @@ const PinWrapper = styled(TouchableOpacity)`
 export const CategoryComponent = props => {
   const [isPinned, setIsPinned] = useState(false);
   const {categories, setCategories} = useContext(CategoryContext);
-  const catData = categories;
 
   const setDataState = () => {
     for (let i = 0; i < catData.length; i++) {
@@ -37,12 +37,12 @@ export const CategoryComponent = props => {
   };
 
   // 핀을 누르면 json data의 isPinned 값을 변경해준다
-  useEffect(() => {
-    console.log('the state has changed', isPinned);
-    setDataState();
-    // console.log(JSON.stringify(catData));
-    setCategories(catData);
-  }, [isPinned]);
+  // useEffect(() => {
+  //   console.log('the state has changed', isPinned);
+  //   setDataState();
+  //   // console.log(JSON.stringify(catData));
+  //   setCategories(catData);
+  // }, [isPinned]);
 
   return (
     <Container>

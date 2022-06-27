@@ -12,6 +12,7 @@ import styled from 'styled-components/native';
 import {TopTab} from '../Components/TopTab_SimpleTitle';
 import {CategoryComponent} from '../Components/CategoryComponent';
 import {CategoryContext} from '../Services/Categories/categories.context';
+import {catMock} from '../Services/Categories/categoryListMock';
 
 const ContentWrapper = styled(View)`
   flex: 1;
@@ -67,8 +68,7 @@ const CatList = styled(FlatList)``;
 export const CategorySettingsScreen = ({navigation}) => {
   const [orderNew, setOrderNew] = useState(true);
   const [orderPop, setOrderPop] = useState(false);
-  const {categories, setCategoriesHandler} = useContext(CategoryContext);
-
+  const {categories, setCategories} = useContext(CategoryContext);
   //데이터의 순서를 바꿔주는 함수
   const getSortData = data => {
     const checkedData = data.filter(item => item.checked === true);

@@ -15,12 +15,11 @@ export const PostContextProvider = ({children}) => {
 
   const retrievePosts = () => {
     setPosts(mocks);
-    console.log('retrieved!');
+    console.log('Post data retrieved!');
   };
   useEffect(() => {
-    retrievePosts(mocks);
-    console.log();
-  });
+    retrievePosts();
+  }, []);
   return (
     <PostContext.Provider
       value={{

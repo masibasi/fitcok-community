@@ -6,25 +6,27 @@ import React, {
   useMemo,
 } from 'react';
 
-import {catMock} from './CategoryListMock';
+import {catMock} from './categoryListMock';
 
 export const CategoryContext = createContext();
 
 export const CategoryContextProvider = ({children}) => {
   const [categories, setCategories] = useState([]);
-  const setCategoriesHandler = cat => {
-    setCategories(cat);
+
+  const retrieveCategories = () => {
+    setCategories(catMock);
+    console.log('Category Data Retrieved!');
   };
   useEffect(() => {
-    // console.log(...catMock);
-    setCategories(...catMock);
-  }, []);
+    setCategories(catMock);
+    console.log('cat data : ' + categories);
+  });
 
   return (
     <CategoryContext.Provider
       value={{
         categories,
-        setCategoriesHandler,
+        setCategories,
       }}>
       {children}
     </CategoryContext.Provider>
