@@ -18,10 +18,7 @@ import {NoCommentDisplay} from '../Components/NoCommentDisplay';
 import LikeIcon from '../Icon/icHeartBk24.svg';
 import CommentIcon from '../Icon/icCommentBk24.svg';
 
-import mockData from '../Services/PostMock.json';
-import {Post} from '../Components/Post';
 import {Comment} from '../Components/Comment';
-import {ReComment} from '../Components/ReComment';
 
 const Container = styled(KeyboardAwareScrollView)`
   background-color: white;
@@ -178,8 +175,8 @@ export const PostDetailScreen = ({route, navigation}) => {
         </ButtonContainer>
         {comments > 0 ? (
           <>
-            {comment.map(comment => {
-              return <Comment key={comment.commentId} item={comment} />;
+            {comment.map(cmt => {
+              return <Comment key={cmt.commentId} item={cmt} />;
             })}
             <Spacer />
           </>

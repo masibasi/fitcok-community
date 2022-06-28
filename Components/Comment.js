@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity, Touchable} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Touchable,
+  TextInput,
+} from 'react-native';
 import styled from 'styled-components';
 
 import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
@@ -78,6 +85,20 @@ const Line = styled(View)`
   border-color: rgb(132, 133, 137);
   border-top-width: 1px;
 `;
+const ReCommentTextInput = styled(TextInput).attrs({
+  placeholder: '댓글을 입력해주세요.',
+  placeholderTextColor: 'rgb(186, 187, 192)',
+  fontSize: 12,
+})`
+  height: 32px;
+  margin-left: 53px;
+  margin-right: 16px;
+  margin-bottom: 12px;
+  border-radius: 22px;
+  border-color: rgb(229, 230, 232);
+  border-width: 1px;
+  padding-left: 12px;
+`;
 export const Comment = props => {
   const [moreClicked, setMoreClicked] = useState(false);
   const {
@@ -95,7 +116,6 @@ export const Comment = props => {
     writer = true,
     recomment = [],
   } = props.item;
-  console.log(recomment.length);
   return (
     <>
       <Container>
@@ -120,8 +140,16 @@ export const Comment = props => {
       </Container>
       {recomment.length > 1 ? (
         moreClicked ? (
-          recomment.map(recomment => {
-            return <ReComment key={recomment.recommentId} item={recomment} />;
+          recomment.map((recomment, i, array) => {
+            if (i + 1 === array.length) {
+              return (
+                <>
+                  <ReComment key={recomment.recommentId} item={recomment} />
+                  <ReCommentTextInput />
+                </>
+              );
+            } else
+              return <ReComment key={recomment.recommentId} item={recomment} />;
           })
         ) : (
           <>
@@ -138,7 +166,10 @@ export const Comment = props => {
           </>
         )
       ) : recomment.length == 0 ? null : (
-        <ReComment key={recomment.recommentId} item={recomment[0]} />
+        <>
+          <ReComment key={recomment.recommentId} item={recomment[0]} />
+          <ReCommentTextInput />
+        </>
       )}
     </>
   );
