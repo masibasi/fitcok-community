@@ -1,9 +1,9 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, TouchableOpacity, Touchable} from 'react-native';
 import styled from 'styled-components';
 
 import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
-import DotMenu from '../Icon/icDotmenuBk24.svg';
+import DotMenu from '../Icon/icDotmenuGray18.svg';
 import WriterBadge from '../Icon/communityBadge.svg';
 
 import {ReComment} from './ReComment';
@@ -56,7 +56,30 @@ const AddCommentForComment = styled(Text)`
   color: rgb(132, 133, 137);
   padding-left: 8px;
 `;
+const MoreButtonWrapper = styled(TouchableOpacity)`
+  height: 20px;
+  width: 100%;
+  margin-left: 53px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  align-items: center;
+  flex-direction: row;
+  // background-color: black;
+`;
+const MoreButtonText = styled(Text)`
+  color: rgb(132, 133, 137);
+  font-size: 12px;
+`;
+const Line = styled(View)`
+  width: 16px;
+  height: 1px;
+  margin-right: 8px;
+
+  border-color: rgb(132, 133, 137);
+  border-top-width: 1px;
+`;
 export const Comment = props => {
+  const [moreClicked, setMoreClicked] = useState(false);
   const {
     title = 'Default Title',
     id = '',
@@ -72,7 +95,7 @@ export const Comment = props => {
     writer = true,
     recomment = [],
   } = props.item;
-
+  console.log(recomment.length);
   return (
     <>
       <Container>
@@ -95,9 +118,28 @@ export const Comment = props => {
           </AddCommentWrapper>
         </BottomWrapper>
       </Container>
-      {recomment.map(recomment => {
-        return <ReComment key={recomment.recommentId} item={recomment} />;
-      })}
+      {recomment.length > 1 ? (
+        moreClicked ? (
+          recomment.map(recomment => {
+            return <ReComment key={recomment.recommentId} item={recomment} />;
+          })
+        ) : (
+          <>
+            <ReComment key={recomment.recommentId} item={recomment[0]} />
+            <MoreButtonWrapper
+              onPress={() => {
+                setMoreClicked(true);
+              }}>
+              <Line />
+              <MoreButtonText>
+                답글 {recomment.length - 1}개 더 보기
+              </MoreButtonText>
+            </MoreButtonWrapper>
+          </>
+        )
+      ) : recomment.length == 0 ? null : (
+        <ReComment key={recomment.recommentId} item={recomment[0]} />
+      )}
     </>
   );
 };

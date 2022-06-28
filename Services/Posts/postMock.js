@@ -15,7 +15,7 @@ export const mocks = [
     comment: [
       {
         commentId: 0,
-        nickname: '매콤한 닭가슴살',
+        nicknamme: '매콤한 닭가슴살',
         writer: true,
         mainText:
           '샐러드 배달 시켜서 먹고 있습니다~!\n요즘에 맛도 다양하게 나와서 식단조절 하는 것\n같지가 않아요',
@@ -32,6 +32,18 @@ export const mocks = [
         recomment: [
           {
             recommentId: 0,
+            nickname: '매콤한 닭가슴살',
+            elapsedTime: '1달전',
+            mainText: '저도 샐러드로 다이어트 성공했어요',
+          },
+          {
+            recommentId: 1,
+            nickname: '매콤한 닭가슴살',
+            elapsedTime: '1달전',
+            mainText: '저도 샐러드로 다이어트 성공했어요',
+          },
+          {
+            recommentId: 2,
             nickname: '매콤한 닭가슴살',
             elapsedTime: '1달전',
             mainText: '저도 샐러드로 다이어트 성공했어요',
