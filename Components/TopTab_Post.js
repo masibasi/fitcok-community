@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, Text, TouchableOpacity, View, Alert} from 'react-native';
 import styled from 'styled-components/native';
 
@@ -36,6 +36,15 @@ const DotMenuWrapper = styled(TouchableOpacity)``;
 export const TopTab = ({navigation}) => {
   const toast = useToast();
   const [isBellOn, setIsBellOn] = useState(true);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+
+  useEffect(() => {
+    if (isFirstVisit) setIsFirstVisit(false);
+    else
+      isBellOn
+        ? toast.show('이 게시글에 대한 알림을 켰습니다')
+        : toast.show('이 게시글에 대한 알림을 껐습니다');
+  }, [isBellOn]);
   return (
     <TopContainer>
       <BackIconWrapper
@@ -48,9 +57,6 @@ export const TopTab = ({navigation}) => {
         <NotificationIconWrapper
           onPress={() => {
             setIsBellOn(!isBellOn);
-            isBellOn
-              ? toast.show('이 게시글에 대한 알림을 켰습니다')
-              : toast.show('이 게시글에 대한 알림을 껐습니다');
           }}>
           {isBellOn ? <BellOnIcon /> : <BellOffIcon />}
         </NotificationIconWrapper>
