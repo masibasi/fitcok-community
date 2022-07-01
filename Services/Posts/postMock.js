@@ -1,7 +1,7 @@
 export const mocks = [
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
-    id: 1,
+    id: 0,
     nickname: '닉네임',
     elapsed_time: '1분전',
     mainText:
@@ -70,7 +70,7 @@ export const mocks = [
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
-    id: 2,
+    id: 1,
     nickname: '닉네임',
     elapsed_time: '1분전',
     mainText:
@@ -84,7 +84,7 @@ export const mocks = [
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
-    id: 3,
+    id: 2,
     nickname: '닉네임',
     elapsed_time: '1분전',
     mainText:
@@ -98,7 +98,7 @@ export const mocks = [
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
-    id: 4,
+    id: 3,
     nickname: '닉네임',
     elapsed_time: '1분전',
     mainText:
@@ -107,6 +107,21 @@ export const mocks = [
     isPopular: null,
     postTag: '테마1',
     image: true,
+    src: ['../Img/communityImg1.png', '../Img/communityImg2.png'],
+    likes: 12,
+    comments: 0,
+  },
+  {
+    title: '다이어트 식단 관리 다들 어떻게 하시나요?',
+    id: 4,
+    nickname: '닉네임',
+    elapsed_time: '1분전',
+    mainText:
+      'a제2항의 재판관중 3인은 국회에서\n선출하는 자를,3인은 대법원장이 지명하는 자를 임명\n한다. 제안된 헌법개정안은 대통령이 20일 이상의 기간 이를\n공고하여야 한다. 대통령은 헌법과 법률이 정하는 바에 의하\n여 국군을 통수한다. 국민경제자문회의의 조직·직무법위 기타\n필요한 사항은 법률로 정한다. 모든 국민은 그 보호하는 자녀\n에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를\n진다.',
+    isQuestionPost: null,
+    isPopular: null,
+    postTag: '테마1',
+    image: null,
     likes: 12,
     comments: 0,
   },
@@ -127,20 +142,6 @@ export const mocks = [
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
     id: 6,
-    nickname: '닉네임',
-    elapsed_time: '1분전',
-    mainText:
-      'a제2항의 재판관중 3인은 국회에서\n선출하는 자를,3인은 대법원장이 지명하는 자를 임명\n한다. 제안된 헌법개정안은 대통령이 20일 이상의 기간 이를\n공고하여야 한다. 대통령은 헌법과 법률이 정하는 바에 의하\n여 국군을 통수한다. 국민경제자문회의의 조직·직무법위 기타\n필요한 사항은 법률로 정한다. 모든 국민은 그 보호하는 자녀\n에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를\n진다.',
-    isQuestionPost: null,
-    isPopular: null,
-    postTag: '테마1',
-    image: null,
-    likes: 12,
-    comments: 0,
-  },
-  {
-    title: '다이어트 식단 관리 다들 어떻게 하시나요?',
-    id: 7,
     nickname: '닉네임',
     elapsed_time: '1분전',
     mainText:

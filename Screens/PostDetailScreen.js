@@ -134,6 +134,12 @@ const Spacer = styled(View)`
   height: 80px;
 `;
 
+const ImgList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    //padding: 16,
+  },
+  horizontal: true,
+})``;
 export const PostDetailScreen = ({route, navigation}) => {
   let {
     title = 'Default Title',
@@ -148,7 +154,17 @@ export const PostDetailScreen = ({route, navigation}) => {
     image = null,
     comments = '-1',
     comment = [],
+    src = [],
   } = route.params.datas;
+  () => {
+    let i = 0;
+    if (src != null) {
+    }
+    srcReq = [];
+    console.log(src[i]);
+    // srcReq[i] = require(src[i]);
+    i++;
+  };
   return (
     <PostDetailWrapper>
       <TopTab navigation={navigation} />
@@ -162,6 +178,20 @@ export const PostDetailScreen = ({route, navigation}) => {
             <ElapsedTime>{elapsed_time}</ElapsedTime>
           </DetailsWrapper>
           <MainText>{mainText}</MainText>
+
+          {image ? (
+            <ImgList
+              data={src}
+              renderItem={({item, index, separators}) => {
+                console.log(src[index]);
+                let srcTemp = src[index];
+                return <Image source={{uri: item[index]}} />;
+              }}
+              keyExtractor={item => item}
+              // ItemSeparatorComponent={<View></View>}
+            />
+          ) : null}
+          <Image source={require('../Img/communityImg1.png')} />
         </MainContainer>
         <ButtonContainer>
           <LikeButtonWrapper onPress={() => (likes = likes + 1)}>
