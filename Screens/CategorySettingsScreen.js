@@ -12,7 +12,6 @@ import styled from 'styled-components/native';
 import {TopTab} from '../Components/TopTab_SimpleTitle';
 import {CategoryComponent} from '../Components/CategoryComponent';
 import {CategoryContext} from '../Services/Categories/categories.context';
-import {catMock} from '../Services/Categories/categoryListMock';
 
 const ContentWrapper = styled(View)`
   flex: 1;

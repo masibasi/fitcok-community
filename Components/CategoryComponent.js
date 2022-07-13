@@ -6,7 +6,7 @@ import PinIcon from '../Icon/icPinActive24.svg';
 import UnpinIcon from '../Icon/icPinDisabled24.svg';
 import XBtnIcon from '../Icon/icCloseBk24.svg';
 import {CategoryContext} from '../Services/Categories/categories.context';
-import {catMock} from '../Services/Categories/categoryListMock';
+import {catMock} from '../Services/Categories/CategoryListMock';
 import {check} from 'prettier';
 
 const Container = styled(View)`

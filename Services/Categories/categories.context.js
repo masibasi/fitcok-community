@@ -6,7 +6,7 @@ import React, {
   useMemo,
 } from 'react';
 
-import {catMock} from './categoryListMock';
+import {catMock} from './CategoryListMock';
 
 export const CategoryContext = createContext();
 
