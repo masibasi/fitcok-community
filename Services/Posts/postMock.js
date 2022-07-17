@@ -107,7 +107,12 @@ export const mocks = [
     isPopular: null,
     postTag: '테마1',
     image: true,
-    src: ['../Img/communityImg1.png', '../Img/communityImg2.png'],
+    src: [
+      require('../../Img/communityImg1.png'),
+      require('../../Img/communityImg2.png'),
+      require('../../Img/communityImg2.png'),
+      require('../../Img/communityImg2.png'),
+    ],
     likes: 12,
     comments: 0,
   },

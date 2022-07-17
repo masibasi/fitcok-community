@@ -133,13 +133,27 @@ const EnterCommentBtn = styled(TouchableOpacity)`
 const Spacer = styled(View)`
   height: 80px;
 `;
-
+const ImgSpacer = styled(View)`
+  height: 4px;
+`;
+const FlatListItemSeperator = () => {
+  return (
+    <View
+      style={{
+        width: 4,
+        backgroundColor: 'white',
+      }}
+    />
+  );
+};
 const ImgList = styled(FlatList).attrs({
   contentContainerStyle: {
     //padding: 16,
   },
   horizontal: true,
-})``;
+})`
+  margin-top: 24px;
+`;
 export const PostDetailScreen = ({route, navigation}) => {
   let {
     title = 'Default Title',
@@ -156,15 +170,8 @@ export const PostDetailScreen = ({route, navigation}) => {
     comment = [],
     src = [],
   } = route.params.datas;
-  () => {
-    let i = 0;
-    if (src != null) {
-    }
-    srcReq = [];
-    console.log(src[i]);
-    // srcReq[i] = require(src[i]);
-    i++;
-  };
+
+  console.log(src);
   return (
     <PostDetailWrapper>
       <TopTab navigation={navigation} />
@@ -179,19 +186,16 @@ export const PostDetailScreen = ({route, navigation}) => {
           </DetailsWrapper>
           <MainText>{mainText}</MainText>
 
-          {image ? (
+          {src != [] ? (
             <ImgList
               data={src}
               renderItem={({item, index, separators}) => {
-                console.log(src[index]);
-                let srcTemp = src[index];
-                return <Image source={{uri: item[index]}} />;
+                return <Image source={src[index]} />;
               }}
               keyExtractor={item => item}
-              // ItemSeparatorComponent={<View></View>}
+              ItemSeparatorComponent={FlatListItemSeperator}
             />
           ) : null}
-          <Image source={require('../Img/communityImg1.png')} />
         </MainContainer>
         <ButtonContainer>
           <LikeButtonWrapper onPress={() => (likes = likes + 1)}>
