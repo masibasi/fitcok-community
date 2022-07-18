@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Image} from 'react-native';
 import {ThemeBox} from '../Components/ThemeBox';
 import {TopTab} from '../Components/TopTab_Post';
@@ -40,7 +40,7 @@ export const PostDetailScreen = ({route, navigation}) => {
     title = 'Default Title',
     id = 0,
     nickname = '이지민',
-    elapsed_time = '999분 전',
+    elapsedTime = '999분 전',
     mainText = 'hello my name is jimin',
     likes = '-1',
     isQuestionPost = false,
@@ -53,23 +53,34 @@ export const PostDetailScreen = ({route, navigation}) => {
   } = route.params.datas;
   const {posts, setPosts} = useContext(PostContext);
   const [inputText, setInputText] = useState('');
+  const [commentExist, setCommentExist] = useState(false);
+
+  // 댓글의 수를 읽어서 댓글 표시할지 댓글없음 창 표시할지 나타냄
+  useEffect(() => {
+    if (posts[id].comments > 0) {
+      setCommentExist(true);
+      console.log(true);
+    }
+  }, []);
   const onChangeInputHandler = text => {
     setInputText(text);
-    console.log(inputText);
   };
   const onReset = () => {
     setInputText('');
   };
-  let postTemp = posts;
 
   const SubmitEditingHandler = event => {
     console.log('onSubmitEditing');
     if (inputText == '') return;
-    addComment();
+    else {
+      addComment();
+      setCommentExist(true);
+    }
   };
 
   // 추가할 댓글 json 객체를 생성해주는 함수
   const addComment = () => {
+    console.log('addComment');
     let commentId = posts[id].comment.length;
     let commenter = '매콤한 닭가슴살'; // 게시자 업데이트 필요
     let writer = true; // 작성자 여부 체크 팔요
@@ -82,7 +93,7 @@ export const PostDetailScreen = ({route, navigation}) => {
       nickname: commenter,
       writer: writer,
       mainText: mainText,
-      elapsed_time: elapsedTime,
+      elapsedTime: elapsedTime,
       recomment: recomment,
     };
     updatePost(newComment);
@@ -91,11 +102,19 @@ export const PostDetailScreen = ({route, navigation}) => {
 
   //통째 Post 데이터 중 현재 Post 데이터를 업데이트(댓글추가) 하여 context를 업데이트 한다
   const updatePost = newComment => {
+    console.log('updatePost');
     comment.push(newComment);
-    postTemp[id].comment = comment;
-    console.log(postTemp[id].comment);
-    setPosts([...posts]);
+    //console.log(comment);
+    //console.log(posts[id].comment); // !!!!!!!!!!!context는 왜 업데이트 되는건지 모르겠다./... 뭐지이거 무서워
+    let tempPost = posts;
+    tempPost[id].comment = comment;
+    setPosts([...tempPost]);
+    console.log(posts[id].comment);
   };
+
+  useEffect(() => {
+    console.log('post update');
+  }, [posts]);
   return (
     <PostDetailWrapper>
       <TopTab navigation={navigation} />
@@ -131,7 +150,7 @@ export const PostDetailScreen = ({route, navigation}) => {
           </CommentButtonWrapper>
           <Comments>{posts[id].comments}</Comments>
         </ButtonContainer>
-        {posts[id].comments > 0 ? (
+        {commentExist ? (
           <>
             {posts[id].comment.map(cmt => {
               return <Comment key={cmt.commentId} item={cmt} />;

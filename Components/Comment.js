@@ -1,111 +1,79 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Touchable,
-  TextInput,
-} from 'react-native';
-import styled from 'styled-components';
+import React, {useState, useContext} from 'react';
 
-import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
 import DotMenu from '../Icon/icDotmenuGray18.svg';
 import WriterBadge from '../Icon/communityBadge.svg';
 
 import {ReComment} from './ReComment';
-
-const Container = styled(View)`
-  border-top-width: 1px;
-  border-color: rgb(246, 246, 248);
-  height: 150px;
-  // background-color: red;
-  padding-left: 16px;
-  padding-top: 16px;
-  padding-right: 16px;
-  justify-content: space-between;
-`;
-const ContentWrapper = styled(View)``;
-const TopWrapper = styled(View)`
-  flex-direction: row;
-  margin-bottom: 4px;
-  justify-content: space-between;
-`;
-const WriterWrapper = styled(View)`
-  flex-direction: row;
-`;
-const Writer = styled(Text)`
-  color: black;
-  font-size: 12px;
-  font-weight: 800;
-  padding-right: 4px;
-`;
-const DotMenuWrapper = styled(TouchableOpacity)``;
-const CommentText = styled(Text)`
-  color: rgb(70, 71, 72);
-  line-height: 22px;
-  font-size: 14px;
-`;
-const BottomWrapper = styled(View)`
-  flex-direction: row;
-  margin-bottom: 12px;
-`;
-const DaysAgo = styled(Text)`
-  color: rgb(132, 133, 137);
-  padding-right: 8px;
-  border-right-width: 1px;
-  border-color: rgb(229, 230, 232);
-  font-size: 12px;
-`;
-const AddCommentWrapper = styled(TouchableOpacity)``;
-const AddCommentForComment = styled(Text)`
-  font-size: 12px;
-  color: rgb(132, 133, 137);
-  padding-left: 8px;
-`;
-const MoreButtonWrapper = styled(TouchableOpacity)`
-  height: 20px;
-  width: 100%;
-  margin-left: 53px;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  align-items: center;
-  flex-direction: row;
-  // background-color: black;
-`;
-const MoreButtonText = styled(Text)`
-  color: rgb(132, 133, 137);
-  font-size: 12px;
-`;
-const Line = styled(View)`
-  width: 16px;
-  height: 1px;
-  margin-right: 8px;
-
-  border-color: rgb(132, 133, 137);
-  border-top-width: 1px;
-`;
-const ReCommentTextInput = styled(TextInput).attrs({
-  placeholder: '댓글을 입력해주세요.',
-  placeholderTextColor: 'rgb(186, 187, 192)',
-  fontSize: 12,
-})`
-  height: 32px;
-  margin-left: 53px;
-  margin-right: 16px;
-  margin-bottom: 12px;
-  border-radius: 22px;
-  border-color: rgb(229, 230, 232);
-  border-width: 1px;
-  padding-left: 12px;
-`;
+import {PostContext} from '../Services/Posts/posts.context';
+import {
+  Container,
+  ContentWrapper,
+  TopWrapper,
+  WriterWrapper,
+  Writer,
+  DotMenuWrapper,
+  CommentText,
+  BottomWrapper,
+  DaysAgo,
+  AddCommentWrapper,
+  AddCommentForComment,
+  MoreButtonWrapper,
+  MoreButtonText,
+  Line,
+  ReCommentTextInput,
+} from './Comment.style';
 export const Comment = props => {
   const [moreClicked, setMoreClicked] = useState(false);
+  const {posts, setPosts} = useContext(PostContext);
+  const [inputText, setInputText] = useState('');
+
+  const onChangeInputHandler = text => {
+    setInputText(text);
+    console.log(inputText);
+  };
+  const onReset = () => {
+    setInputText('');
+  };
+
+  const SubmitEditingHandler = event => {
+    console.log('onSubmitEditing');
+    if (inputText == '') return;
+    addReComment();
+  };
+
+  // 추가할 댓글 json 객체를 생성해주는 함수
+  const addReComment = () => {
+    let recommentId = posts[id].comment.length;
+    let recommenter = '매콤한 닭가슴살'; // 게시자 업데이트 필요
+    let writer = true; // 작성자 여부 체크 팔요
+    let mainText = inputText;
+    let elapsedTime = '방금 전'; // 추가된 시간 업데이트 필요
+    let recomment = [];
+    console.log(mainText);
+    let newComment = {
+      commentId: recommentId,
+      nickname: recommenter,
+      writer: writer,
+      mainText: mainText,
+      elapsed_time: elapsedTime,
+      recomment: recomment,
+    };
+    updatePost(newComment);
+    onReset();
+  };
+
+  //통째 Post 데이터 중 현재 Post 데이터를 업데이트(댓글추가) 하여 context를 업데이트 한다
+  const updatePost = newComment => {
+    comment.push(newComment);
+    postTemp[id].comment = comment;
+    console.log(postTemp[id].comment);
+    setPosts([...posts]);
+  };
   const {
     title = 'Default Title',
     id = '',
     nickname = '이지민',
-    elapsed_time = '999분 전',
+    elapsedTime = '999분 전',
     mainText = 'hello my name is jimin',
     isQuestionPost = false,
     isPopular = false,
@@ -132,7 +100,7 @@ export const Comment = props => {
           <CommentText>{mainText}</CommentText>
         </ContentWrapper>
         <BottomWrapper>
-          <DaysAgo>1달전</DaysAgo>
+          <DaysAgo>{elapsedTime}</DaysAgo>
           <AddCommentWrapper>
             <AddCommentForComment>답글쓰기</AddCommentForComment>
           </AddCommentWrapper>
@@ -145,7 +113,7 @@ export const Comment = props => {
               return (
                 <>
                   <ReComment key={recomment.recommentId} item={recomment} />
-                  <ReCommentTextInput />
+                  <ReCommentTextInput key={-1} />
                 </>
               );
             } else

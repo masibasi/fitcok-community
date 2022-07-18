@@ -116,7 +116,7 @@ export const EnterCommentBtn = styled(TouchableOpacity)`
   top: 16px;
 `;
 export const Spacer = styled(View)`
-  height: 80px;
+  height: 45px;
 `;
 export const ImgSpacer = styled(View)`
   height: 4px;
