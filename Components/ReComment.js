@@ -2,10 +2,7 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styled from 'styled-components';
 
-import CommentIcon from '../Icon/icCommentBk24Copy6.svg';
 import DotMenu from '../Icon/icDotmenuGray18.svg';
-import WriterBadge from '../Icon/communityBadge.svg';
-import mockData from '../Services/PostMock.json';
 
 const Container = styled(View)`
   border-top-width: 1px;

@@ -81,6 +81,7 @@ export const mocks = [
     image: null,
     likes: 12,
     comments: 0,
+    comment: [],
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
@@ -95,6 +96,7 @@ export const mocks = [
     image: null,
     likes: 12,
     comments: 0,
+    comment: [],
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
@@ -115,6 +117,7 @@ export const mocks = [
     ],
     likes: 12,
     comments: 0,
+    comment: [],
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
@@ -129,6 +132,7 @@ export const mocks = [
     image: null,
     likes: 12,
     comments: 0,
+    comment: [],
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
@@ -143,6 +147,7 @@ export const mocks = [
     image: null,
     likes: 12,
     comments: 0,
+    comment: [],
   },
   {
     title: '다이어트 식단 관리 다들 어떻게 하시나요?',
@@ -157,5 +162,6 @@ export const mocks = [
     image: null,
     likes: 12,
     comments: 0,
+    comment: [],
   },
 ];
