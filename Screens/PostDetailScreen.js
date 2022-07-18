@@ -57,11 +57,11 @@ export const PostDetailScreen = ({route, navigation}) => {
   const [inputText, setInputText] = useState('');
   const [commentExist, setCommentExist] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
+
   // 댓글의 수를 읽어서 댓글 표시할지 댓글없음 창 표시할지 나타냄
   useEffect(() => {
     if (posts[id].comments > 0) {
       setCommentExist(true);
-      console.log(true);
     }
   }, []);
   const onChangeInputHandler = text => {
@@ -114,9 +114,7 @@ export const PostDetailScreen = ({route, navigation}) => {
     console.log(posts[id].comment);
   };
 
-  useEffect(() => {
-    console.log('post update');
-  }, [posts]);
+  useEffect(() => {}, [posts]);
   return (
     <PostDetailWrapper>
       <WriterPostMenu

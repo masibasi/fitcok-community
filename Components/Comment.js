@@ -26,52 +26,9 @@ export const Comment = props => {
   const [moreClicked, setMoreClicked] = useState(false);
   const {posts, setPosts} = useContext(PostContext);
   const [inputText, setInputText] = useState('');
-
-  const onChangeInputHandler = text => {
-    setInputText(text);
-    console.log(inputText);
-  };
-  const onReset = () => {
-    setInputText('');
-  };
-
-  const SubmitEditingHandler = event => {
-    console.log('onSubmitEditing');
-    if (inputText == '') return;
-    addReComment();
-  };
-
-  // 추가할 댓글 json 객체를 생성해주는 함수
-  const addReComment = () => {
-    let recommentId = posts[id].comment.length;
-    let recommenter = '매콤한 닭가슴살'; // 게시자 업데이트 필요
-    let writer = true; // 작성자 여부 체크 팔요
-    let mainText = inputText;
-    let elapsedTime = '방금 전'; // 추가된 시간 업데이트 필요
-    let recomment = [];
-    console.log(mainText);
-    let newComment = {
-      commentId: recommentId,
-      nickname: recommenter,
-      writer: writer,
-      mainText: mainText,
-      elapsed_time: elapsedTime,
-      recomment: recomment,
-    };
-    updatePost(newComment);
-    onReset();
-  };
-
-  //통째 Post 데이터 중 현재 Post 데이터를 업데이트(댓글추가) 하여 context를 업데이트 한다
-  const updatePost = newComment => {
-    comment.push(newComment);
-    postTemp[id].comment = comment;
-    console.log(postTemp[id].comment);
-    setPosts([...posts]);
-  };
-  const {
+  let {
     title = 'Default Title',
-    id = '',
+    commentId = '',
     nickname = '이지민',
     elapsedTime = '999분 전',
     mainText = 'hello my name is jimin',
@@ -85,6 +42,49 @@ export const Comment = props => {
     recomment = [],
   } = props.item;
   const postId = props.postId;
+
+  console.log('commentId : ' + commentId);
+  // console.log(posts[postId].comment[commentId].recomment);
+  console.log(recomment);
+  const onChangeInputHandler = text => {
+    setInputText(text);
+  };
+  const onReset = () => {
+    setInputText('');
+  };
+
+  const SubmitEditingHandler = event => {
+    console.log('onSubmitEditing');
+    if (inputText == '') return;
+    addReComment();
+  };
+
+  // 추가할 댓글 json 객체를 생성해주는 함수
+  const addReComment = () => {
+    let recommentId = posts[postId].comment[commentId].recomment.length;
+    let recommenter = '매콤한 닭가슴살'; // 게시자 업데이트 필요
+    let mainText = inputText;
+    let elapsedTime = '방금 전'; // 추가된 시간 업데이트 필요
+    console.log('recomment text : ' + mainText);
+    let newRecomment = {
+      commentId: recommentId,
+      nickname: recommenter,
+      mainText: mainText,
+      elapsed_time: elapsedTime,
+    };
+    updatePost(newRecomment);
+    onReset();
+  };
+
+  //통째 Post 데이터 중 현재 Post 데이터를 업데이트(댓글추가) 하여 context를 업데이트 한다
+  const updatePost = newRecomment => {
+    console.log('updatePost');
+    recomment.push(newRecomment);
+    let tempPost = posts;
+    tempPost[postId].comment[commentId] = recomment;
+    setPosts([...tempPost]);
+    console.log(tempPost[postId].comment[commentId].recomment);
+  };
   return (
     <>
       <Container>
@@ -137,7 +137,10 @@ export const Comment = props => {
       ) : recomment.length == 0 ? null : (
         <>
           <ReComment key={recomment.recommentId} item={recomment[0]} />
-          <ReCommentTextInput />
+          <ReCommentTextInput
+            onSubmitEditing={SubmitEditingHandler}
+            onChangeText={onChangeInputHandler}
+          />
         </>
       )}
     </>
