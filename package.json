@@ -19,6 +19,8 @@
     "react-native": "0.67.2",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
+    "react-native-modal": "^13.0.1",
+    "react-native-modalbox": "^2.0.2",
     "react-native-pager-view": "^5.4.11",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.12.0",

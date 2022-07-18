@@ -33,11 +33,13 @@ const RightContainer = styled(View)`
 const NotificationIconWrapper = styled(TouchableOpacity)``;
 const DotMenuWrapper = styled(TouchableOpacity)``;
 
-export const TopTab = ({navigation}) => {
+export const TopTab = props => {
   const toast = useToast();
   const [isBellOn, setIsBellOn] = useState(true);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
-
+  const toggleModal = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
   useEffect(() => {
     if (isFirstVisit) setIsFirstVisit(false);
     else
@@ -49,7 +51,7 @@ export const TopTab = ({navigation}) => {
     <TopContainer>
       <BackIconWrapper
         onPress={() => {
-          navigation.goBack();
+          props.navigation.goBack();
         }}>
         <BackIcon />
       </BackIconWrapper>
@@ -60,7 +62,7 @@ export const TopTab = ({navigation}) => {
           }}>
           {isBellOn ? <BellOnIcon /> : <BellOffIcon />}
         </NotificationIconWrapper>
-        <DotMenuWrapper>
+        <DotMenuWrapper onPress={toggleModal}>
           <DotMenu />
         </DotMenuWrapper>
       </RightContainer>

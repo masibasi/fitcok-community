@@ -1,8 +1,9 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {Image} from 'react-native';
+import Modal from 'react-native-modal';
+
 import {ThemeBox} from '../Components/ThemeBox';
 import {TopTab} from '../Components/TopTab_Post';
-
 import {PostContext} from '../Services/Posts/posts.context';
 import {NoCommentDisplay} from '../Components/NoCommentDisplay';
 
@@ -34,6 +35,7 @@ import {
   FlatListItemSeperator,
   ImgList,
 } from './PostDetailScreen.style';
+import {ModalTester, WriterPostMenu} from '../Components/Modals';
 
 export const PostDetailScreen = ({route, navigation}) => {
   let {
@@ -54,7 +56,7 @@ export const PostDetailScreen = ({route, navigation}) => {
   const {posts, setPosts} = useContext(PostContext);
   const [inputText, setInputText] = useState('');
   const [commentExist, setCommentExist] = useState(false);
-
+  const [isModalVisible, setModalVisible] = useState(false);
   // 댓글의 수를 읽어서 댓글 표시할지 댓글없음 창 표시할지 나타냄
   useEffect(() => {
     if (posts[id].comments > 0) {
@@ -117,7 +119,15 @@ export const PostDetailScreen = ({route, navigation}) => {
   }, [posts]);
   return (
     <PostDetailWrapper>
-      <TopTab navigation={navigation} />
+      <WriterPostMenu
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+      />
+      <TopTab
+        navigation={navigation}
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+      />
       <Container>
         <MainContainer>
           <ThemeBox />
@@ -153,7 +163,7 @@ export const PostDetailScreen = ({route, navigation}) => {
         {commentExist ? (
           <>
             {posts[id].comment.map(cmt => {
-              return <Comment key={cmt.commentId} item={cmt} />;
+              return <Comment key={cmt.commentId} item={cmt} postId={id} />;
             })}
             <Spacer />
           </>

@@ -84,6 +84,7 @@ export const Comment = props => {
     writer = true,
     recomment = [],
   } = props.item;
+  const postId = props.postId;
   return (
     <>
       <Container>
