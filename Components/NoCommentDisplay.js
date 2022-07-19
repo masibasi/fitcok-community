@@ -6,7 +6,7 @@ const Container = styled(View)`
   margin-bottom: auto;
   align-items: center;
   padding-top: 48px;
-  padding-bottom: 10px;
+  padding-bottom: 60px;
   background-color: white;
   height: 100%;
 `;
