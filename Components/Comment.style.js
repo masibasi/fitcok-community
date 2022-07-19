@@ -6,7 +6,6 @@ export const Container = styled(View)`
   border-top-width: 1px;
   border-color: rgb(246, 246, 248);
   height: 150px;
-  // background-color: red;
   padding-left: 16px;
   padding-top: 16px;
   padding-right: 16px;

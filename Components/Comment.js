@@ -23,12 +23,8 @@ import {
   ReCommentTextInput,
 } from './Comment.style';
 import {MyCommentMenu, OtherCommentMenu} from './Modals';
+
 export const Comment = props => {
-  const [moreClicked, setMoreClicked] = useState(false);
-  const {posts, setPosts} = useContext(PostContext);
-  const [inputText, setInputText] = useState('');
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [isWriter, setIsWriter] = useState(writer);
   let {
     title = 'Default Title',
     commentId = '',
@@ -43,8 +39,16 @@ export const Comment = props => {
     comments = '-1',
     writer = true,
     recomment = [],
+    deleted = false,
   } = props.item;
   const postId = props.postId;
+
+  const [moreClicked, setMoreClicked] = useState(false);
+  const {posts, setPosts} = useContext(PostContext);
+  const [inputText, setInputText] = useState('');
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isWriter, setIsWriter] = useState(writer);
+  const [isDeleted, setIsDeleted] = useState(deleted);
 
   // console.log('commentId : ' + commentId);
   // console.log(posts[postId].comment[commentId].recomment);
@@ -62,7 +66,7 @@ export const Comment = props => {
     addReComment();
   };
 
-  // 추가할 댓글 json 객체를 생성해주는 함수
+  // 추가할 댓 json 객체를 생성해주는 함수
   const addReComment = () => {
     let recommentId = posts[postId].comment[commentId].recomment.length;
     let recommenter = '매콤한 닭가슴살'; // 게시자 업데이트 필요
