@@ -167,6 +167,39 @@ export const MyCommentMenu = props => {
     </View>
   );
 };
+export const OtherCommentMenu = props => {
+  const toggleModal = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
+  const WriterToggleHandler = () => {
+    props.setIsWriter(!props.isWriter);
+  };
+  const ToggleDeleteCommentButton = () => {
+    props.setModalVisible(!props.isModalVisible);
+    setModalVisible(!isModalVisible);
+  };
+  const [isModalVisible, setModalVisible] = useState(false);
+  return (
+    <View>
+      <Button title="Comment Writer : off" onPress={WriterToggleHandler} />
+      <DeleteCommentPopup
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+      />
+      <Modal isVisible={props.isModalVisible}>
+        <Container>
+          <View style={{flex: 1}} />
+          <OneMenu onPress={ToggleDeleteCommentButton}>
+            <RedText>댓글 신고하기</RedText>
+          </OneMenu>
+          <CloseBtn onPress={toggleModal}>
+            <CLoseText>닫기</CLoseText>
+          </CloseBtn>
+        </Container>
+      </Modal>
+    </View>
+  );
+};
 
 const RedDeleteText = styled(Text)`
   font-size: 14px;
