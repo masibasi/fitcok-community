@@ -23,6 +23,7 @@ import {
   ReCommentTextInput,
 } from './Comment.style';
 import {MyCommentMenu, OtherCommentMenu} from './Modals';
+import {DeletedComment} from './DeletedComment';
 
 export const Comment = props => {
   let {
@@ -98,42 +99,48 @@ export const Comment = props => {
   };
   return (
     <>
-      <Container>
-        {isWriter ? (
-          <MyCommentMenu
-            isModalVisible={isModalVisible}
-            setModalVisible={setModalVisible}
-            setIsWriter={setIsWriter}
-            isWriter={isWriter}
-          />
-        ) : (
-          <OtherCommentMenu
-            isModalVisible={isModalVisible}
-            setModalVisible={setModalVisible}
-            setIsWriter={setIsWriter}
-            isWriter={isWriter}
-          />
-        )}
+      {isDeleted ? (
+        <DeletedComment />
+      ) : (
+        <Container>
+          {isWriter ? (
+            <MyCommentMenu
+              isModalVisible={isModalVisible}
+              setModalVisible={setModalVisible}
+              setIsWriter={setIsWriter}
+              isWriter={isWriter}
+              setIsDeleted={setIsDeleted}
+            />
+          ) : (
+            <OtherCommentMenu
+              isModalVisible={isModalVisible}
+              setModalVisible={setModalVisible}
+              setIsWriter={setIsWriter}
+              isWriter={isWriter}
+            />
+          )}
 
-        <ContentWrapper>
-          <TopWrapper>
-            <WriterWrapper>
-              <Writer>{nickname}</Writer>
-              {writer ? <WriterBadge /> : null}
-            </WriterWrapper>
-            <DotMenuWrapper onPress={toggleMenu}>
-              <DotMenu />
-            </DotMenuWrapper>
-          </TopWrapper>
-          <CommentText>{mainText}</CommentText>
-        </ContentWrapper>
-        <BottomWrapper>
-          <DaysAgo>{elapsedTime}</DaysAgo>
-          <AddCommentWrapper>
-            <AddCommentForComment>답글쓰기</AddCommentForComment>
-          </AddCommentWrapper>
-        </BottomWrapper>
-      </Container>
+          <ContentWrapper>
+            <TopWrapper>
+              <WriterWrapper>
+                <Writer>{nickname}</Writer>
+                {writer ? <WriterBadge /> : null}
+              </WriterWrapper>
+              <DotMenuWrapper onPress={toggleMenu}>
+                <DotMenu />
+              </DotMenuWrapper>
+            </TopWrapper>
+            <CommentText>{mainText}</CommentText>
+          </ContentWrapper>
+          <BottomWrapper>
+            <DaysAgo>{elapsedTime}</DaysAgo>
+            <AddCommentWrapper>
+              <AddCommentForComment>답글쓰기</AddCommentForComment>
+            </AddCommentWrapper>
+          </BottomWrapper>
+        </Container>
+      )}
+
       {recomment.length > 1 ? (
         moreClicked ? (
           recomment.map((recomment, i, array) => {
