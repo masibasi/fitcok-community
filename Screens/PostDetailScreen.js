@@ -59,6 +59,7 @@ export const PostDetailScreen = ({route, navigation}) => {
   const [commentExist, setCommentExist] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isWriter, setIsWriter] = useState(writer);
+  const [commentsNum, setCommentsNum] = useState(comments);
 
   // 댓글의 수를 읽어서 댓글 표시할지 댓글없음 창 표시할지 나타냄
   useEffect(() => {
@@ -100,6 +101,7 @@ export const PostDetailScreen = ({route, navigation}) => {
       elapsedTime: elapsedTime,
       recomment: recomment,
     };
+
     updatePost(newComment);
     onReset();
   };
@@ -112,8 +114,11 @@ export const PostDetailScreen = ({route, navigation}) => {
     //console.log(posts[id].comment); // !!!!!!!!!!!context는 왜 업데이트 되는건지 모르겠다./... 뭐지이거 무서워
     let tempPost = posts;
     tempPost[id].comment = comment;
+
+    tempPost[id].comments = commentsNum + 1;
+    setCommentsNum(commentsNum + 1);
     setPosts([...tempPost]);
-    console.log(posts[id].comment);
+    console.log(posts[id].comments);
   };
 
   useEffect(() => {}, [posts]);
