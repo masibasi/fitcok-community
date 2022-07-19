@@ -10,6 +10,7 @@ const Container = styled(View)`
   border-radius: 6px;
   height: 110px;
   background-color: rgb(246, 246, 248);
+  margin-top: 12px;
   margin-left: 53px;
   margin-right: 16px;
   margin-bottom: 8px;
