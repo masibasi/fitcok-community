@@ -115,7 +115,12 @@ export const OtherPostMenu = props => {
     toggleModal();
     setIsReportModalVisible(!isReportModalVisible);
   };
+  const ShareClickHandler = () => {
+    toggleModal();
+    setIsShareModalVisible(!isShareModalVisible);
+  };
   const [isReportModalVisible, setIsReportModalVisible] = useState(false);
+  const [isShareModalVisible, setIsShareModalVisible] = useState(false);
   return (
     <View>
       <Button title="Post Writer : off" onPress={WriterToggleHandler} />
@@ -123,13 +128,17 @@ export const OtherPostMenu = props => {
         isModalVisible={isReportModalVisible}
         setModalVisible={setIsReportModalVisible}
       />
+      <SharePopup
+        isModalVisible={isShareModalVisible}
+        setModalVisible={setIsShareModalVisible}
+      />
       <Modal isVisible={props.isModalVisible}>
         <Container>
           <View style={{flex: 1}} />
           <TopHalfMenu onPress={ReportClickHandler}>
             <BlueText>게시글 신고하기</BlueText>
           </TopHalfMenu>
-          <BottomHalfMenu>
+          <BottomHalfMenu onPress={ShareClickHandler}>
             <BlueText>게시글 공유하기</BlueText>
           </BottomHalfMenu>
           <CloseBtn onPress={toggleModal}>
@@ -342,7 +351,7 @@ const ReportTitle = styled(Text)`
   font-size: 18px;
   font-weight: 800;
   margin-top: 17px;
-  margin-bottom: 23px;
+  margin-bottom: 24px;
 `;
 const TextAreaWrapper = styled(View)`
   width: 100%;
@@ -441,6 +450,54 @@ export const ReportPopup = props => {
               <ConfirmText>확인</ConfirmText>
             </ConfirmButton>
           </ButtonWrapper>
+        </ReportContainer>
+      </Modal>
+    </View>
+  );
+};
+
+const ShareIconWrapper = styled(View)`
+  flex-direction: row;
+  padding-bottom: 40px;
+`;
+const Spacer = styled(View)`
+  width: 24px;
+`;
+import LinkIcon from '../Icon/btnShare.svg';
+import MoreIcon from '../Icon/group5.svg';
+import {useToast} from 'react-native-toast-notifications';
+
+export const SharePopup = props => {
+  const ClosePopupHandler = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
+
+  const toast = useToast();
+
+  return (
+    <View>
+      <Modal style={{margin: 0}} isVisible={props.isModalVisible}>
+        <View style={{flex: 1}} />
+        <ReportContainer>
+          <View style={{flexDirection: 'row-reverse'}}>
+            <CloseIcon onPress={ClosePopupHandler} />
+          </View>
+          <ReportTitle>공유하기</ReportTitle>
+          <ShareIconWrapper>
+            <Image source={require('../Img/btnKakaotalkLogin56.png')} />
+            <Spacer />
+            <LinkIcon
+              onPress={() => {
+                toast.show('링크 공유');
+              }}
+            />
+            <Spacer />
+            <MoreIcon
+              onPress={() => {
+                toast.show('더보기');
+              }}
+            />
+          </ShareIconWrapper>
         </ReportContainer>
       </Modal>
     </View>

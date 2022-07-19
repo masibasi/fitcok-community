@@ -1,0 +1,11 @@
+<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <circle fill="#464748" cx="28" cy="28" r="28"/>
+        <path d="M40 16v24H16V16z"/>
+        <g transform="rotate(90 4.5 31)" fill="#FFF">
+            <circle cx="1.5" cy="1.5" r="1.5"/>
+            <circle cx="1.5" cy="7.5" r="1.5"/>
+            <circle cx="1.5" cy="13.5" r="1.5"/>
+        </g>
+    </g>
+</svg>
