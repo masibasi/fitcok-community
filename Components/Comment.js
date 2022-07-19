@@ -22,10 +22,13 @@ import {
   Line,
   ReCommentTextInput,
 } from './Comment.style';
+import {MyCommentMenu, OtherCommentMenu} from './Modals';
 export const Comment = props => {
   const [moreClicked, setMoreClicked] = useState(false);
   const {posts, setPosts} = useContext(PostContext);
   const [inputText, setInputText] = useState('');
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isWriter, setIsWriter] = useState(writer);
   let {
     title = 'Default Title',
     commentId = '',
@@ -43,9 +46,9 @@ export const Comment = props => {
   } = props.item;
   const postId = props.postId;
 
-  console.log('commentId : ' + commentId);
+  // console.log('commentId : ' + commentId);
   // console.log(posts[postId].comment[commentId].recomment);
-  console.log(recomment);
+  // console.log(recomment);
   const onChangeInputHandler = text => {
     setInputText(text);
   };
@@ -85,16 +88,36 @@ export const Comment = props => {
     setPosts([...tempPost]);
     console.log(tempPost[postId].comment[commentId].recomment);
   };
+
+  const toggleMenu = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <>
       <Container>
+        {isWriter ? (
+          <MyCommentMenu
+            isModalVisible={isModalVisible}
+            setModalVisible={setModalVisible}
+            setIsWriter={setIsWriter}
+            isWriter={isWriter}
+          />
+        ) : (
+          <OtherCommentMenu
+            isModalVisible={isModalVisible}
+            setModalVisible={setModalVisible}
+            setIsWriter={setIsWriter}
+            isWriter={isWriter}
+          />
+        )}
+
         <ContentWrapper>
           <TopWrapper>
             <WriterWrapper>
               <Writer>{nickname}</Writer>
               {writer ? <WriterBadge /> : null}
             </WriterWrapper>
-            <DotMenuWrapper>
+            <DotMenuWrapper onPress={toggleMenu}>
               <DotMenu />
             </DotMenuWrapper>
           </TopWrapper>

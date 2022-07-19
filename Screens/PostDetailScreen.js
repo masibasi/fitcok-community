@@ -87,7 +87,7 @@ export const PostDetailScreen = ({route, navigation}) => {
     console.log('addComment');
     let commentId = posts[id].comment.length;
     let commenter = '매콤한 닭가슴살'; // 게시자 업데이트 필요
-    let writer = true; // 작성자 여부 체크 팔요
+    let writer = isWriter;
     let mainText = inputText;
     let elapsedTime = '방금 전'; // 추가된 시간 업데이트 필요
     let recomment = [];

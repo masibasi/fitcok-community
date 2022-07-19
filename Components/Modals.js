@@ -22,31 +22,31 @@ const CLoseText = styled(Text)`
   font-weight: 800;
   color: rgb(30, 109, 255);
 `;
-const DeletePost = styled(TouchableOpacity)`
+const TopHalfMenu = styled(TouchableOpacity)`
   width: 343px;
   height: 54px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: white;
   justify-content: center;
   align-items: center;
   border-bottom-width: 0.1px;
-  border-color: rgb(186, 187, 192);
+  border-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.85);
 `;
-const DeletePostText = styled(Text)`
+const RedText = styled(Text)`
   font-size: 16px;
   font-weight: 500;
   color: rgb(239, 44, 95);
 `;
-const EditPost = styled(TouchableOpacity)`
+const BottomHalfMenu = styled(TouchableOpacity)`
   width: 343px;
   height: 54px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-color: white;
   justify-content: center;
   align-items: center;
   margin-bottom: 8px;
+  background-color: rgba(255, 255, 255, 0.85);
 `;
 const BlueText = styled(Text)`
   font-size: 16px;
@@ -54,6 +54,15 @@ const BlueText = styled(Text)`
   color: rgb(30, 109, 255);
 `;
 
+const OneMenu = styled(TouchableOpacity)`
+  width: 343px;
+  height: 54px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  background-color: rgba(255, 255, 255, 0.85);
+`;
 export const WriterPostMenu = props => {
   const toggleModal = () => {
     props.setModalVisible(!props.isModalVisible);
@@ -63,16 +72,16 @@ export const WriterPostMenu = props => {
   };
   return (
     <View>
-      <Button title="Writer : on" onPress={WriterToggleHandler} />
+      <Button title="Post Writer : on" onPress={WriterToggleHandler} />
       <Modal isVisible={props.isModalVisible}>
         <Container>
           <View style={{flex: 1}} />
-          <DeletePost>
-            <DeletePostText>게시글 삭제하기</DeletePostText>
-          </DeletePost>
-          <EditPost>
+          <TopHalfMenu>
+            <RedText>게시글 삭제하기</RedText>
+          </TopHalfMenu>
+          <BottomHalfMenu>
             <BlueText>게시글 수정하기</BlueText>
-          </EditPost>
+          </BottomHalfMenu>
           <CloseBtn onPress={toggleModal}>
             <CLoseText>닫기</CLoseText>
           </CloseBtn>
@@ -91,16 +100,69 @@ export const OtherPostMenu = props => {
   };
   return (
     <View>
-      <Button title="Writer : off" onPress={WriterToggleHandler} />
+      <Button title="Post Writer : off" onPress={WriterToggleHandler} />
       <Modal isVisible={props.isModalVisible}>
         <Container>
           <View style={{flex: 1}} />
-          <DeletePost>
+          <TopHalfMenu>
             <BlueText>게시글 신고하기</BlueText>
-          </DeletePost>
-          <EditPost>
+          </TopHalfMenu>
+          <BottomHalfMenu>
             <BlueText>게시글 공유하기</BlueText>
-          </EditPost>
+          </BottomHalfMenu>
+          <CloseBtn onPress={toggleModal}>
+            <CLoseText>닫기</CLoseText>
+          </CloseBtn>
+        </Container>
+      </Modal>
+    </View>
+  );
+};
+
+export const MyCommentMenu = props => {
+  const toggleModal = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
+  const WriterToggleHandler = () => {
+    props.setIsWriter(!props.isWriter);
+  };
+  return (
+    <View>
+      <Button title="Comment Writer : on" onPress={WriterToggleHandler} />
+      <Modal isVisible={props.isModalVisible}>
+        <Container>
+          <View style={{flex: 1}} />
+          <TopHalfMenu>
+            <RedText>댓글 삭제하기</RedText>
+          </TopHalfMenu>
+          <BottomHalfMenu>
+            <BlueText>댓글 수정하기</BlueText>
+          </BottomHalfMenu>
+          <CloseBtn onPress={toggleModal}>
+            <CLoseText>닫기</CLoseText>
+          </CloseBtn>
+        </Container>
+      </Modal>
+    </View>
+  );
+};
+
+export const OtherCommentMenu = props => {
+  const toggleModal = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
+  const WriterToggleHandler = () => {
+    props.setIsWriter(!props.isWriter);
+  };
+  return (
+    <View>
+      <Button title="Comment Writer : off" onPress={WriterToggleHandler} />
+      <Modal isVisible={props.isModalVisible}>
+        <Container>
+          <View style={{flex: 1}} />
+          <OneMenu>
+            <RedText>게시글 신고하기</RedText>
+          </OneMenu>
           <CloseBtn onPress={toggleModal}>
             <CLoseText>닫기</CLoseText>
           </CloseBtn>
