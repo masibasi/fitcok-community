@@ -48,7 +48,7 @@ const EditPost = styled(TouchableOpacity)`
   align-items: center;
   margin-bottom: 8px;
 `;
-const EditPostText = styled(Text)`
+const BlueText = styled(Text)`
   font-size: 16px;
   font-weight: 500;
   color: rgb(30, 109, 255);
@@ -58,9 +58,12 @@ export const WriterPostMenu = props => {
   const toggleModal = () => {
     props.setModalVisible(!props.isModalVisible);
   };
-
+  const WriterToggleHandler = () => {
+    props.setIsWriter(!props.isWriter);
+  };
   return (
     <View>
+      <Button title="Writer : on" onPress={WriterToggleHandler} />
       <Modal isVisible={props.isModalVisible}>
         <Container>
           <View style={{flex: 1}} />
@@ -68,7 +71,35 @@ export const WriterPostMenu = props => {
             <DeletePostText>게시글 삭제하기</DeletePostText>
           </DeletePost>
           <EditPost>
-            <EditPostText>게시글 수정하기</EditPostText>
+            <BlueText>게시글 수정하기</BlueText>
+          </EditPost>
+          <CloseBtn onPress={toggleModal}>
+            <CLoseText>닫기</CLoseText>
+          </CloseBtn>
+        </Container>
+      </Modal>
+    </View>
+  );
+};
+
+export const OtherPostMenu = props => {
+  const toggleModal = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
+  const WriterToggleHandler = () => {
+    props.setIsWriter(!props.isWriter);
+  };
+  return (
+    <View>
+      <Button title="Writer : off" onPress={WriterToggleHandler} />
+      <Modal isVisible={props.isModalVisible}>
+        <Container>
+          <View style={{flex: 1}} />
+          <DeletePost>
+            <BlueText>게시글 신고하기</BlueText>
+          </DeletePost>
+          <EditPost>
+            <BlueText>게시글 공유하기</BlueText>
           </EditPost>
           <CloseBtn onPress={toggleModal}>
             <CLoseText>닫기</CLoseText>

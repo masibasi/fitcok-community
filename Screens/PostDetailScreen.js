@@ -35,7 +35,7 @@ import {
   FlatListItemSeperator,
   ImgList,
 } from './PostDetailScreen.style';
-import {ModalTester, WriterPostMenu} from '../Components/Modals';
+import {OtherPostMenu, WriterPostMenu} from '../Components/Modals';
 
 export const PostDetailScreen = ({route, navigation}) => {
   let {
@@ -52,11 +52,13 @@ export const PostDetailScreen = ({route, navigation}) => {
     comments = '-1',
     comment = [],
     src = [],
+    writer = false,
   } = route.params.datas;
   const {posts, setPosts} = useContext(PostContext);
   const [inputText, setInputText] = useState('');
   const [commentExist, setCommentExist] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isWriter, setIsWriter] = useState(writer);
 
   // 댓글의 수를 읽어서 댓글 표시할지 댓글없음 창 표시할지 나타냄
   useEffect(() => {
@@ -117,10 +119,22 @@ export const PostDetailScreen = ({route, navigation}) => {
   useEffect(() => {}, [posts]);
   return (
     <PostDetailWrapper>
-      <WriterPostMenu
-        isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
-      />
+      {isWriter ? (
+        <WriterPostMenu
+          isModalVisible={isModalVisible}
+          setModalVisible={setModalVisible}
+          setIsWriter={setIsWriter}
+          isWriter={isWriter}
+        />
+      ) : (
+        <OtherPostMenu
+          isModalVisible={isModalVisible}
+          setModalVisible={setModalVisible}
+          setIsWriter={setIsWriter}
+          isWriter={isWriter}
+        />
+      )}
+
       <TopTab
         navigation={navigation}
         isModalVisible={isModalVisible}
