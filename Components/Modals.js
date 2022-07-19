@@ -155,7 +155,7 @@ export const MyCommentMenu = props => {
   const [isModalVisible, setModalVisible] = useState(false);
   return (
     <View>
-      <Button title="Comment Writer : on" onPress={WriterToggleHandler} />
+      {/* <Button title="Comment Writer : on" onPress={WriterToggleHandler} /> */}
       <DeleteCommentPopup
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}

@@ -8,9 +8,9 @@ const Container = styled(View)`
   border-top-width: 1px;
   border-color: rgb(246, 246, 248);
   border-radius: 6px;
-  height: 110px;
+
   background-color: rgb(246, 246, 248);
-  margin-top: 12px;
+
   margin-left: 53px;
   margin-right: 16px;
   margin-bottom: 8px;
@@ -40,6 +40,7 @@ const CommentText = styled(Text)`
 `;
 const BottomWrapper = styled(View)`
   flex-direction: row;
+  margin-top: 12px;
 `;
 const DaysAgo = styled(Text)`
   color: rgb(132, 133, 137);

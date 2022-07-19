@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const Container = styled(View)`
   border-top-width: 1px;
   border-color: rgb(246, 246, 248);
-  height: 150px;
   padding-left: 16px;
   padding-top: 16px;
   padding-right: 16px;
@@ -34,6 +33,7 @@ export const CommentText = styled(Text)`
 `;
 export const BottomWrapper = styled(View)`
   flex-direction: row;
+  margin-top: 12px;
   margin-bottom: 12px;
 `;
 export const DaysAgo = styled(Text)`
