@@ -161,6 +161,12 @@ export const MyCommentMenu = props => {
     props.setModalVisible(!props.isModalVisible);
     setModalVisible(!isModalVisible);
   };
+  const EditCommentToggleHandler = () => {
+    props.navigation.navigate('EditCommentScreen', {
+      postId: props.postId,
+      commentId: props.commentId,
+    });
+  };
   const [isModalVisible, setModalVisible] = useState(false);
   return (
     <View>
@@ -176,7 +182,7 @@ export const MyCommentMenu = props => {
           <TopHalfMenu onPress={ToggleDeleteCommentButton}>
             <RedText>댓글 삭제하기</RedText>
           </TopHalfMenu>
-          <BottomHalfMenu>
+          <BottomHalfMenu onPress={EditCommentToggleHandler}>
             <BlueText>댓글 수정하기</BlueText>
           </BottomHalfMenu>
           <CloseBtn onPress={toggleModal}>

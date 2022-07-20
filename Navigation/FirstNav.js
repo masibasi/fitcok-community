@@ -11,6 +11,7 @@ import {NotificationsScreen} from '../Screens/NotificationsScreen';
 import {ToastProvider} from 'react-native-toast-notifications';
 import {PostContextProvider} from '../Services/Posts/posts.context';
 import {CategoryContextProvider} from '../Services/Categories/categories.context';
+import {EditCommentScreen} from '../Screens/EditCommentScreen';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,10 @@ export const FirstNav = () => {
           <Stack.Screen
             name="NotificationsScreen"
             component={NotificationsScreen}
+          />
+          <Stack.Screen
+            name="EditCommentScreen"
+            component={EditCommentScreen}
           />
         </Stack.Navigator>
       </CategoryContextProvider>

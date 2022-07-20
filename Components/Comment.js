@@ -110,6 +110,9 @@ export const Comment = props => {
               setIsWriter={setIsWriter}
               isWriter={isWriter}
               setIsDeleted={setIsDeleted}
+              navigation={props.navigation}
+              postId={postId}
+              commentId={commentId}
             />
           ) : (
             <OtherCommentMenu

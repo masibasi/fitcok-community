@@ -180,7 +180,14 @@ export const PostDetailScreen = ({route, navigation}) => {
         {commentExist ? (
           <>
             {posts[id].comment.map(cmt => {
-              return <Comment key={cmt.commentId} item={cmt} postId={id} />;
+              return (
+                <Comment
+                  key={cmt.commentId}
+                  item={cmt}
+                  postId={id}
+                  navigation={navigation}
+                />
+              );
             })}
             <Spacer />
           </>
