@@ -68,6 +68,12 @@ const OneMenu = styled(TouchableOpacity)`
   background-color: rgba(255, 255, 255, 0.85);
 `;
 export const WriterPostMenu = props => {
+  const ModalHiddenHandler = () => {
+    if (deleteShow) {
+      setModalVisible(!isModalVisible);
+      setDeleteShow(false);
+    }
+  };
   const toggleModal = () => {
     props.setModalVisible(!props.isModalVisible);
   };
@@ -76,9 +82,10 @@ export const WriterPostMenu = props => {
   };
   const ToggleDeletePostButton = () => {
     props.setModalVisible(!props.isModalVisible);
-    setModalVisible(!isModalVisible);
+    setDeleteShow(true);
   };
   const [isModalVisible, setModalVisible] = useState(false);
+  const [deleteShow, setDeleteShow] = useState(false);
   return (
     <View>
       <DeletePostPopup
@@ -86,7 +93,7 @@ export const WriterPostMenu = props => {
         setModalVisible={setModalVisible}
       />
       <Button title="Post Writer : on" onPress={WriterToggleHandler} />
-      <Modal isVisible={props.isModalVisible}>
+      <Modal isVisible={props.isModalVisible} onModalHide={ModalHiddenHandler}>
         <Container>
           <View style={{flex: 1}} />
           <TopHalfMenu onPress={ToggleDeletePostButton}>
@@ -105,6 +112,10 @@ export const WriterPostMenu = props => {
 };
 
 export const OtherPostMenu = props => {
+  const [isReportModalVisible, setIsReportModalVisible] = useState(false);
+  const [isShareModalVisible, setIsShareModalVisible] = useState(false);
+  const [shareShow, setShareShow] = useState(false);
+  const [reportShow, setReportShow] = useState(false);
   const toggleModal = () => {
     props.setModalVisible(!props.isModalVisible);
   };
@@ -112,15 +123,25 @@ export const OtherPostMenu = props => {
     props.setIsWriter(!props.isWriter);
   };
   const ReportClickHandler = () => {
+    // setIsReportModalVisible(!isReportModalVisible);
     toggleModal();
-    setIsReportModalVisible(!isReportModalVisible);
+    setReportShow(true);
   };
   const ShareClickHandler = () => {
+    setShareShow(true);
     toggleModal();
-    setIsShareModalVisible(!isShareModalVisible);
+    // setIsShareModalVisible(!isShareModalVisible);
   };
-  const [isReportModalVisible, setIsReportModalVisible] = useState(false);
-  const [isShareModalVisible, setIsShareModalVisible] = useState(false);
+  const ModalHiddenHandler = () => {
+    if (shareShow) {
+      setIsShareModalVisible(true);
+      setShareShow(false);
+    }
+    if (reportShow) {
+      setIsReportModalVisible(true);
+      setReportShow(false);
+    }
+  };
   return (
     <View>
       <Button title="Post Writer : off" onPress={WriterToggleHandler} />
@@ -132,7 +153,7 @@ export const OtherPostMenu = props => {
         isModalVisible={isShareModalVisible}
         setModalVisible={setIsShareModalVisible}
       />
-      <Modal isVisible={props.isModalVisible}>
+      <Modal isVisible={props.isModalVisible} onModalHide={ModalHiddenHandler}>
         <Container>
           <View style={{flex: 1}} />
           <TopHalfMenu onPress={ReportClickHandler}>
@@ -154,29 +175,37 @@ export const MyCommentMenu = props => {
   const toggleModal = () => {
     props.setModalVisible(!props.isModalVisible);
   };
+  const ModalHiddenHandler = () => {
+    if (deleteShow) {
+      setDeleteModalVisible(!isDeleteModalVisible);
+      setDeleteShow(false);
+    }
+  };
   const WriterToggleHandler = () => {
     props.setIsWriter(!props.isWriter);
   };
   const ToggleDeleteCommentButton = () => {
     props.setModalVisible(!props.isModalVisible);
-    setModalVisible(!isModalVisible);
+    setDeleteShow(true);
   };
   const EditCommentToggleHandler = () => {
+    props.setModalVisible(false);
     props.navigation.navigate('EditCommentScreen', {
       postId: props.postId,
       commentId: props.commentId,
     });
   };
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [deleteShow, setDeleteShow] = useState(false);
   return (
     <View>
       {/* <Button title="Comment Writer : on" onPress={WriterToggleHandler} /> */}
       <DeleteCommentPopup
-        isModalVisible={isModalVisible}
-        setModalVisible={setModalVisible}
+        isModalVisible={isDeleteModalVisible}
+        setModalVisible={setDeleteModalVisible}
         setIsDeleted={props.setIsDeleted}
       />
-      <Modal isVisible={props.isModalVisible}>
+      <Modal isVisible={props.isModalVisible} onModalHide={ModalHiddenHandler}>
         <Container>
           <View style={{flex: 1}} />
           <TopHalfMenu onPress={ToggleDeleteCommentButton}>
@@ -196,16 +225,23 @@ export const MyCommentMenu = props => {
 export const OtherCommentMenu = props => {
   const [isReportModalVisible, setIsReportModalVisible] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [reportShow, setReportShow] = useState(false);
 
   const toggleModal = () => {
     props.setModalVisible(!props.isModalVisible);
+  };
+  const ModalHiddenHandler = () => {
+    if (reportShow) {
+      setIsReportModalVisible(true);
+      setReportShow(false);
+    }
   };
   const WriterToggleHandler = () => {
     props.setIsWriter(!props.isWriter);
   };
   const ReportClickHandler = () => {
+    setReportShow(true);
     props.setModalVisible(!props.isModalVisible);
-    setIsReportModalVisible(true);
   };
 
   return (
@@ -219,7 +255,7 @@ export const OtherCommentMenu = props => {
         isModalVisible={isReportModalVisible}
         setModalVisible={setIsReportModalVisible}
       />
-      <Modal isVisible={props.isModalVisible}>
+      <Modal isVisible={props.isModalVisible} onModalHide={ModalHiddenHandler}>
         <Container>
           <View style={{flex: 1}} />
           <OneMenu onPress={ReportClickHandler}>
