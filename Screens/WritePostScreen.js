@@ -17,9 +17,7 @@ import VideoIcon from '../Icon/icVideoBk24.svg';
 import IsCheckedIcon from '../Icon/icCheckSquareBk18.svg';
 import NotCheckedIcon from '../Icon/icCheckSquareGr18.svg';
 import CloseBoxIcon from '../Icon/icCloseGr16.svg';
-
-import mockData from '../Services/PostMock.json';
-import {Post} from '../Components/Post';
+import {SelectCategoryModal} from '../Components/Modals';
 
 const Container = styled(View)`
   background-color: white;
@@ -177,8 +175,16 @@ const CertifiedText = styled(Text)`
 `;
 
 export const WritePostScreen = ({navigation}) => {
+  const [isRulesOpen, setIsRulesOpen] = useState(true);
+  const [selectModalShow, setIsSelectCatModalShow] = useState(false);
+
   return (
     <>
+      <SelectCategoryModal
+        isModalVisible={selectModalShow}
+        setModalVisible={setIsSelectCatModalShow}
+      />
+
       <TopTab>
         <TouchableOpacity
           onPress={() => {
@@ -193,29 +199,37 @@ export const WritePostScreen = ({navigation}) => {
       </TopTab>
       <Container>
         <MainWrapper>
-          <SelectCategory>
+          <SelectCategory
+            onPress={() => {
+              setIsSelectCatModalShow(true);
+            }}>
             <SelectCategoryText>카테고리를 선택해주세요</SelectCategoryText>
             <RightArrowIcon />
           </SelectCategory>
           <EnterTitleTextInput></EnterTitleTextInput>
           <FlexHelper>
             <EnterContentTextInput></EnterContentTextInput>
-            <ReadRulesNotification>
-              <TitleWrapper>
-                <RulesTitleText>이용규칙을 읽어보세요</RulesTitleText>
-                <CloseBoxWrapper>
-                  <CloseBoxIcon />
-                </CloseBoxWrapper>
-              </TitleWrapper>
+            {isRulesOpen ? (
+              <ReadRulesNotification>
+                <TitleWrapper>
+                  <RulesTitleText>이용규칙을 읽어보세요</RulesTitleText>
+                  <CloseBoxWrapper
+                    onPress={() => {
+                      setIsRulesOpen(!isRulesOpen);
+                    }}>
+                    <CloseBoxIcon />
+                  </CloseBoxWrapper>
+                </TitleWrapper>
 
-              <RulesText>
-                이용규칙에 관련된 안내내용이 들어갑니다. 이용규칙에 관련된{' '}
-                {'\n'}안내용이 들어갑니다. 이용규칙에 관련된 안내내용
-              </RulesText>
-              <RulesMoreWrapper>
-                <RulesMoreText>이용규칙 전체보기</RulesMoreText>
-              </RulesMoreWrapper>
-            </ReadRulesNotification>
+                <RulesText>
+                  이용규칙에 관련된 안내내용이 들어갑니다. 이용규칙에 관련된{' '}
+                  {'\n'}안내용이 들어갑니다. 이용규칙에 관련된 안내내용
+                </RulesText>
+                <RulesMoreWrapper>
+                  <RulesMoreText>이용규칙 전체보기</RulesMoreText>
+                </RulesMoreWrapper>
+              </ReadRulesNotification>
+            ) : null}
           </FlexHelper>
         </MainWrapper>
         <BottomTab>

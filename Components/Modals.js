@@ -508,6 +508,7 @@ const Spacer = styled(View)`
 import LinkIcon from '../Icon/btnShare.svg';
 import MoreIcon from '../Icon/group5.svg';
 import {useToast} from 'react-native-toast-notifications';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
 
 export const SharePopup = props => {
   const ClosePopupHandler = () => {
@@ -541,6 +542,32 @@ export const SharePopup = props => {
             />
           </ShareIconWrapper>
         </ReportContainer>
+      </Modal>
+    </View>
+  );
+};
+
+const CategoryContainer = styled(View)`
+  height: 197px;
+  width: 100%;
+  background-color: white;
+  padding: 16px;
+`;
+const CategoryList = styled(FlatList)``;
+export const SelectCategoryModal = props => {
+  const ClosePopupHandler = () => {
+    props.setModalVisible(!props.isModalVisible);
+  };
+  return (
+    <View>
+      <Modal style={{margin: 0}} isVisible={props.isModalVisible}>
+        <View style={{flex: 1}} />
+        <CategoryContainer>
+          <View style={{flexDirection: 'row-reverse'}}>
+            <CloseIcon onPress={ClosePopupHandler} />
+          </View>
+          <CategoryList />
+        </CategoryContainer>
       </Modal>
     </View>
   );
